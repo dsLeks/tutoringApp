@@ -16,7 +16,7 @@
 | Student Name | Student Email | GitHub Username |
 |    :---:     |     :---:     |     :---:       |
 | William Lushbough      | wlushbough@mail.sfsu.              | lushbough                |
-| member2      |               |                 |
+| Justin Diones      |  jdiones@mail.sfsu.edu             |  justdio               |
 | member3      |               |                 |
 | member4      |               |                 |
 | member5      |               |                 |
