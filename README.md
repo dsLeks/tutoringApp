@@ -16,7 +16,7 @@
 | Student Name | Student Email | GitHub Username |
 |    :---:     |     :---:     |     :---:       |
 | William Lushbough      | wlushbough@mail.sfsu.              | lushbough                |
-| member2      |               |                 |
+| Rui Qi Huang      |  rhuang10@mail.sfsu.edu             |   RuiQiHuang1832              |
 | member3      |               |                 |
 | member4      |               |                 |
 | member5      |               |                 |
