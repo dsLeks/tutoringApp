@@ -18,7 +18,7 @@
 | William Lushbough      | wlushbough@mail.sfsu.              | lushbough                |
 | Justin Diones      |  jdiones@mail.sfsu.edu             |  justdio               |
 | Rui Qi Huang      |    rhuang10@mail.sfsu.edu           |    RuiQiHuang1832             |
-| member4      |               |                 |
+| Mai Ra     |   mra1@mail.sfsu.edu            |  Mai873               |
 | member5      |               |                 |
 | member6      |               |                 |
 
