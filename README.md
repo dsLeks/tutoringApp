@@ -20,6 +20,6 @@
 | Rui Qi Huang      |    rhuang10@mail.sfsu.edu           |    RuiQiHuang1832             |
 | Mai Ra     |   mra1@mail.sfsu.edu            |  Mai873               |
 | Rupak Khatri     |    rkhatri@mail.sfsu.edu           |  RupakKhatri               |
-| member6      |               |                 |
+| Alekhya Gandu      | agandu1@mail.sfsu.edu       | dsLeks                |
 
 ## NO code needs to be stored in the root of your repository. You may rename the application folder if you like to your team's application name. But all source code related to your team's application should be stored inside the application folder.
