@@ -43,7 +43,7 @@ function About() {
               {/* Routing error must be due to `${url} portion.
                   Clicking on the Justin Diones link brings you to localhost:3000/undefined/member1
                   instead of the desired localhost:3000/about/member1*/}
-              <Link to={`${url}/member1`}>Justin Diones</Link>
+              <Link to="/about/member1">Justin Diones</Link>
               </li>
               </ul>
         </div>
