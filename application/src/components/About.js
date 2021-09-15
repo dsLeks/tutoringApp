@@ -3,8 +3,10 @@ import '../index.css'
 import { Route, Link, Switch, useRouteMatch } from 'react-router-dom';
 
 function About() {
+  //Used for routing
   let { path, url} = useRouteMatch;
   return (
+
     <div className="about">
       <div class="container">
         <div class="center">
@@ -33,9 +35,14 @@ function About() {
                     </div>
                 This is the list of technologies that we'll be using for our project.
                 
+              {/* List of team members, clicking on names will open members' specific page. /undefined/member1 error happens here*/}
               <h2>Team Members</h2>
               <ul>
               <li>
+              
+              {/* Routing error must be due to `${url} portion.
+                  Clicking on the Justin Diones link brings you to localhost:3000/undefined/member1
+                  instead of the desired localhost:3000/about/member1*/}
               <Link to={`${url}/member1`}>Justin Diones</Link>
               </li>
               </ul>

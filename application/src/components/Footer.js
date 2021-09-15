@@ -1,6 +1,7 @@
 import React from "react";
 import "./Footer.css"
 
+// Footer does not currently stick to the bottom of the page if page is filled with info
 const Footer = () => {
   return (
     <div className="main-footer">
