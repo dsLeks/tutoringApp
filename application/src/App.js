@@ -10,7 +10,7 @@ function App() {
   //trying browser router and member1 in routes
 }
 
-    <div className="App" style={{ display: 'flex', justifyContent: 'center' }}>
+    <div className="App" style = {{ display: 'flex', justifyContent: 'center'}}>
     <Navigation />
       <Switch>
         <Route exact path="/" component={Home} />
@@ -18,7 +18,7 @@ function App() {
         <Route exact path="/about/member1" component={Member1} />
       </Switch>
     </div>
-    <div className="Footer" style ={{ display: 'flex', justifyContent: 'center' }}>
+    <div className="Footer" style = {{ display: 'flex', justifyContent: 'center' }}>
         <Footer />
     </div>
     </BrowserRouter>      
