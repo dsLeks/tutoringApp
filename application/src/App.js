@@ -1,5 +1,7 @@
 import React from 'react';
-import { Home, About, Member1, Footer } from './components';
+import { Home, About, Footer } from './components';
+// importing member pages below
+import Member1 from './components/members/Member1';
 import { Route, Link, Switch, BrowserRouter } from 'react-router-dom';
 import Navigation from './components/Navigation';
 
