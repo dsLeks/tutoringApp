@@ -1,3 +1,4 @@
+/* Styling for individual about pages */
 .about-info{
     float: left;
     padding: 20px;
@@ -6,6 +7,6 @@
 }
 
 .about-picture{
-    width: 200px;
-    height: 200px;
+    width: 500px;
+    height: 500px;
 }
