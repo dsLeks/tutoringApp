@@ -5,7 +5,7 @@ import { Home, About, Footer } from './components';
 import Member1 from './components/members/Member1';
 import { Route, Link, Switch, BrowserRouter } from 'react-router-dom';
 import Mynavbar from './components/Mynavbar';
-import myHeader from './components/myHeader';
+import MyHeader from './components/MyHeader';
 
 function App() {
     return (
@@ -14,7 +14,9 @@ function App() {
             {
                 //trying browser router and member1 in routes
             }
-            <Mynavbar />
+            <MyHeader />
+            <Mynavbar/>
+
 
             <div className="App" style = {{ display: 'flex', justifyContent: 'center'}}>
                 <Switch>

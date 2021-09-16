@@ -1,5 +1,5 @@
 import React from 'react';
-import "./navbar.css"
+import "./header.css"
 import { NavLink } from 'react-router-dom';
 import { Navbar, Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.css';
@@ -7,13 +7,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 class myHeader extends React.Component{
     render() {
         return (
-            <Navbar bg="success" variant="dark">
+            <div className="container-fluid-nav text-center">
+
+            <Navbar className="background-color" fixed="center" variant="light">
                 <Container>
-                    <Navbar.Brand href="/">CSC648</Navbar.Brand>
-                    <NavLink to="/">Home</NavLink>
-                    <NavLink to="/about">About</NavLink>
+                    <h8 className="theHeader" >SFSU Software Engineering Project CSC648-848, Fall 2021 For Demonstration Only</h8>
                 </Container>
             </Navbar>
+            </div>
 
         );
     }
