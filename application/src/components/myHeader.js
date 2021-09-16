@@ -4,14 +4,14 @@ import { NavLink } from 'react-router-dom';
 import { Navbar, Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.css';
 
-class mynavbar extends React.Component{
+class myHeader extends React.Component{
     render() {
         return (
             <Navbar bg="success" variant="dark">
                 <Container>
                     <Navbar.Brand href="/">CSC648</Navbar.Brand>
-                        <NavLink to="/">Home</NavLink>
-                        <NavLink to="/about">About</NavLink>
+                    <NavLink to="/">Home</NavLink>
+                    <NavLink to="/about">About</NavLink>
                 </Container>
             </Navbar>
 
@@ -22,4 +22,4 @@ class mynavbar extends React.Component{
 
 
 
-export default mynavbar;
+export default myHeader;
