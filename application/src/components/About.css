@@ -1,0 +1,11 @@
+.about-info{
+    float: left;
+    padding: 20px;
+    text-align: left;
+    width: 450px;
+}
+
+.about-picture{
+    width: 200px;
+    height: 200px;
+}
