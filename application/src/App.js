@@ -1,7 +1,7 @@
 import React from 'react';
 import { Home, About, Member1, Footer } from './components';
 import { Route, Link, Switch, BrowserRouter } from 'react-router-dom';
-import Navigation from './components/Navigation';
+import Mynavbar from './components/Mynavbar';
 
 function App() {
   return (
@@ -9,9 +9,9 @@ function App() {
 {
   //trying browser router and member1 in routes
 }
-
+<Mynavbar />
     <div className="App" style={{ display: 'flex', justifyContent: 'center' }}>
-    <Navigation />
+
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/about" component={About} />
