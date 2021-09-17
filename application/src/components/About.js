@@ -47,7 +47,7 @@ function About() {
                         <Link to="/about/RuiQi-Huang">Rui Qi Huang</Link>
                     </li>
                     <li>
-                        <Link to="/about/placeHOLDER">placeHOLDER</Link>
+                        <Link to="/about/Rupak-Khatri">Rupak Khatri</Link>
                     </li>
                     <li>
                         <Link to="/about/placeHOLDER">placeHOLDER</Link>
