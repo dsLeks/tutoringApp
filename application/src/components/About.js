@@ -33,7 +33,6 @@ function About() {
                         <strong>Website Performance: </strong>Google Analytics
                         <br/><br/>
                     </div>
-                    This is the list of technologies that we'll be using for our project.
 
                     {/* List of team members, clicking on names will open members' specific page. /undefined/member1 error happens here*/}
                     <h2>Team Members</h2>

@@ -8,7 +8,7 @@ const Member4 = () => {
     return (
        <div className="container">
          <div>
-         <h1 >Justin Diones</h1>
+         <h1 >William Lushbough</h1>
  
          <div className="about-info">
             GitHub ID: lushbough
