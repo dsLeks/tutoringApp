@@ -1,8 +1,8 @@
 import React from 'react';
 // Import picture from src/components/pictures folder, follow this format to upload your own picture
 // div className shows how to add your picture to the page
-import Picture from './pictures/Mai.jpg'
-import './About.css'
+import Picture from '../../components/pictures/Mai.jpg'
+import '../About.css'
  
 const Member6 = () => {
     return (
