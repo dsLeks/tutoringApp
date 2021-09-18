@@ -17,7 +17,7 @@
 |    :---:     |     :---:     |     :---:       |
 | William Lushbough      | wlushbough@mail.sfsu.              | lushbough                |
 | Rui Qi Huang      |  rhuang10@mail.sfsu.edu             |   RuiQiHuang1832              |
-| member3      |               |                 |
+| Alekhya Gandu      |       agandu1@mail.sfsu.edu        |     dsLeks            |
 | member4      |               |                 |
 | member5      |               |                 |
 | member6      |               |                 |
