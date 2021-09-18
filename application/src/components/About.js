@@ -53,7 +53,7 @@ function About() {
                         <Link to="/about/William-Lushbough">William Lushbough</Link>
                     </li>
                     <li>
-                        <Link to="/about/placeHOLDER">placeHOLDER</Link>
+                        <Link to="/about/Alekhya-Gandu">Alekhya Gandu</Link>
                     </li>
                     <li>
                         <Link to="/about/placeHOLDER">placeHOLDER</Link>
