@@ -56,7 +56,7 @@ function About() {
                         <Link to="/about/placeHOLDER">placeHOLDER</Link>
                     </li>
                     <li>
-                        <Link to="/about/placeHOLDER">placeHOLDER</Link>
+                        <Link to="/about/Mai-Ra">Mai Ra</Link>
                     </li>
                 </div>
             </div>
