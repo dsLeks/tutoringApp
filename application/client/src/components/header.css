@@ -1,0 +1,12 @@
+.theHeader {
+    margin-left: 300px;
+}
+
+.background-color {
+    background: orange;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
