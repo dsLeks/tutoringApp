@@ -14,16 +14,17 @@ var connection = mysql.createConnection({
 }); 
 
 //Connecting to the Database
-connection.connect(function(error) {
-    if(error) {
-        throw error;
-    }
-    console.log('MySql is Connected')
-})
+// connection.connect(function(error) {
+//     if(error) {
+//         throw error;
+//     }
+//     console.log('MySql is Connected')
+// })
 
-//Taking incomming Traffic
-app.get('/', function (req, res) {
-  console.log("The Backend is Up and Running");
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 //Creating a Listening Port 
