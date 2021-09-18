@@ -21,5 +21,3 @@ To SSH into Server:
     Database Name: sfsu-swe-db1
 
 Note: Connection through database can be done through WorkBench. So far, no tables have been created, but database has been connected to receive requests form node server.
-
-## You may store the most of the above in this README.md file. DO NOT Store the SSH key or any keys in this README.md file.
