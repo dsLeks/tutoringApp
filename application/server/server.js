@@ -1,7 +1,7 @@
-const express = require('express')
-const mysql = require('mysql')
+const express = require('express');
+const mysql = require('mysql');
 const path = require('path');
-const port = 3001
+const port = 3001;
 const app = express();
 
 
