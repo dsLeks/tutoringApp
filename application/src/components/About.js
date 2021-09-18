@@ -50,7 +50,7 @@ function About() {
                         <Link to="/about/Rupak-Khatri">Rupak Khatri</Link>
                     </li>
                     <li>
-                        <Link to="/about/placeHOLDER">placeHOLDER</Link>
+                        <Link to="/about/William-Lushbough">William Lushbough</Link>
                     </li>
                     <li>
                         <Link to="/about/placeHOLDER">placeHOLDER</Link>

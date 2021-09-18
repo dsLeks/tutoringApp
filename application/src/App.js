@@ -5,6 +5,7 @@ import { Home, About, Footer } from './components';
 import Member1 from './components/members/Member1';
 import Member2 from './components/members/Member2';
 import Member3 from './components/members/Member3';
+import Member4 from './components/members/Member4';
 import { Route, Link, Switch, BrowserRouter } from 'react-router-dom';
 import Mynavbar from './components/Mynavbar';
 import MyHeader from './components/MyHeader';
@@ -27,6 +28,7 @@ function App() {
                     <Route exact path="/about/Justin-Diones" component={Member1} />
                     <Route exact path="/about/RuiQi-Huang" component={Member2} />
                     <Route exact path="/about/Rupak-Khatri" component={Member3} />
+                    <Route exact path="/about/William-Lushbough" component={Member4} />
 
                 </Switch>
             </div>
