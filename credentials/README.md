@@ -12,7 +12,10 @@ To SSH into Server:
     Run the following command in the folder with ‘alekhyaKey.pem’ present:
     ssh -i "alekhyaKey.pem" ubuntu@184.169.234.47
 
+
 <strong>Database Credentials</strong>
+    
+    These credentials are in .env file on the cloud server with the following lines:  
 
     Hostname / URL: sfsu-swe-db1.cxmkfkhrgxty.us-west-1.rds.amazonaws.com
     Username: admin
@@ -20,4 +23,6 @@ To SSH into Server:
     Port: 3306
     Database Name: sfsu-swe-db1
 
-Note: Connection through database can be done through WorkBench. So far, no tables have been created, but database has been connected to receive requests form node server.
+Note: 
+    The code in git is written to connect to whatever these environment variables are directed to.  
+    Connection through database can be done through WorkBench. So far, no tables have been created, but database has been connected to receive requests form node server.
