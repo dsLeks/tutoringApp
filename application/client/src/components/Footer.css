@@ -1,6 +1,6 @@
-.main-footer{
+/* .main-footer{
     color: white;
-    background-color: purple;
+    background-color: linear-gradient(180deg, rgba(72, 60, 76, 0) 0%, #483C4C 100%);
     text-align: center;
     bottom: 0;
     width: 100%;
@@ -16,4 +16,24 @@
     text-align: center;
     padding:20px 0;
     
+} */
+.main-footer {
+  background:linear-gradient(180deg, rgba(72, 60, 76, 0) 0%, #483C4C 100%);
+  padding-top: 3em;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
+h4{
+  text-decoration: underline;
+}
+
+
+/*.footer {
+  color: white;
+  background-color: #dc3545;
+  padding-top: 3em;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}*/
