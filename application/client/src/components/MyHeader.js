@@ -12,7 +12,7 @@ class myHeader extends React.Component{
 
             <Navbar className="background-color" fixed="center" variant="light">
                 <Container>
-                    <h8 className="theHeader" >SFSU Software Engineering Project CSC648-848, Fall 2021 For Demonstration Only</h8>
+                    <h8 className="theHeader" style={{margin:'auto'}} >SFSU Software Engineering Project CSC648-848, Fall 2021 For Demonstration Only</h8>
                 </Container>
             </Navbar>
             </div>

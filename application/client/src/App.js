@@ -12,10 +12,13 @@ import { Route, Link, Switch, BrowserRouter } from 'react-router-dom';
 import Mynavbar from './components/Mynavbar';
 import MyHeader from './components/MyHeader';
 
+import "./App.css"
+
 function App() {
     return (
 
-        <BrowserRouter>
+        <div className="page-container">
+        <div className="content-wrap">
             {
                 //trying browser router and member1 in routes
             }
@@ -23,7 +26,7 @@ function App() {
             <Mynavbar/>
 
 
-            <div className="App" style = {{ display: 'flex', justifyContent: 'center'}}>
+                <div style = {{ display: 'flex', justifyContent: 'center'}}>
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/about" component={About} />
@@ -34,11 +37,18 @@ function App() {
                     <Route exact path="/about/Alekhya-Gandu" component={Member5} />
                     <Route exact path="/about/Mai-Ra" component={Member6} />
                 </Switch>
-            </div>
-            <div className="Footer" style = {{ display: 'flex', justifyContent: 'center' }}>
+                </div>
+            
+            {/*<div className="Footer" style = {{ display: 'flex', justifyContent: 'center', position:'fixed' }}>
                 <Footer />
             </div>
-        </BrowserRouter>
+        */}
+        </div>
+        
+        <Footer />
+        
+        </div>
+        
     );
 
 }
