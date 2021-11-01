@@ -1,39 +1,9 @@
-/* .main-footer{
-    color: white;
-    background-color: linear-gradient(180deg, rgba(72, 60, 76, 0) 0%, #483C4C 100%);
-    text-align: center;
+.footer{
+    margin-top: 1rem;
+    padding: 0.2rem;
+    background-color: #a85170;
+    position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
-    position:fixed;
-    left:0;
-    bottom:0;
-    right:0;
-    height: 10vh;
-    
-   
   }
-  .bottom{
-    text-align: center;
-    padding:20px 0;
-    
-} */
-.main-footer {
-  background:linear-gradient(180deg, rgba(72, 60, 76, 0) 0%, #483C4C 100%);
-  padding-top: 3em;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-}
-h4{
-  text-decoration: underline;
-}
-
-
-/*.footer {
-  color: white;
-  background-color: #dc3545;
-  padding-top: 3em;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-}*/
