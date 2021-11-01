@@ -1,0 +1,52 @@
+.theme {
+    max-width: 90%;
+    padding: 5px; 
+    margin-right: 10px; 
+}
+
+.searchBar {
+    padding: 5px;
+    margin-left: 5px;
+    margin-right: 5px; 
+}
+
+.wrapper {
+    width: 500px; 
+    margin: auto; 
+    margin-left: 200px; 
+    padding: 10px; 
+    
+}
+
+.searchIcon {
+    padding: 10px; 
+    display: inline; 
+    cursor: pointer;  
+    position: relative; 
+    top: 7px; 
+}
+
+.col {
+    overflow: scroll; 
+    margin-left: auto; 
+    margin-right: auto; 
+    height: 500px; 
+}
+
+#tutors td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+#tutors tr:nth-child(even){background-color: #f2f2f2;}
+  
+#tutors tr:hover {background-color: #ddd;}
+  
+#tutors th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #a85170;
+    color: white;
+  }
+
