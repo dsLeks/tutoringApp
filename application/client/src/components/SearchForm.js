@@ -34,7 +34,7 @@ class SearchForm extends React.Component {
         let cat = this.state.selectedCategory;
         let searchquery = this.state.textSearch; 
 
-        fetch(`http://18.144.37.142:3000/onSubmit?param1=${cat}&param2=${searchquery}`, {
+        fetch(`/onSubmit?param1=${cat}&param2=${searchquery}`, {
             method: "GET",
             headers: {
                 'Content-type': 'application/json'
