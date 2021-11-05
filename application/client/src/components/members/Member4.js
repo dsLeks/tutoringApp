@@ -6,23 +6,25 @@ import '../About.css'
 
 const Member4 = () => {
     return (
-       <div className="container">
-         <div>
-         <h1 >William Lushbough</h1>
+       <div className="about-member">
+          <div className="about-picture">
+            <img src={Picture} className='a-img'/>
+         </div>
+        
+        
  
          <div className="about-info">
+                 <h1 >William Lushbough</h1>
             GitHub ID: lushbough
             <br/> <br/>
             I am the Github Master for Team 7 and a front-end developer. It's my senior year at SFSU. I'm scheduled to graduate December 2021. 
             I'll be using VS Code as my IDE and will be primarily handling the Github repository through Gitbash Terminal and the Github website.
          </div>
          
-         <div className="about-picture">
-            <img src={Picture} />
-         </div>
+         
 
          </div>
-       </div>
+       
     );
 }
  

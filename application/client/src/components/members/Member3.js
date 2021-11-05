@@ -6,24 +6,23 @@ import '../About.css'
 
 const Member3 = () => {
     return (
-        <div className="container">
-            <div>
-                <h1 >Rupak Khatri</h1>
-
-                <div className="about-info">
+        <div className="about-member">
+            <div className="about-picture">
+                    <img src={Picture} className='a-img'/>
+            </div>
+            
+            <div className="about-info">
+                    <h1 >Rupak Khatri</h1>
                     GitHub ID: Rupakkhatri
                     <br/> <br/>
-                    Undergraduate student at San francisco state University. Graduating this Fall. Working as a front end developer
-                    for this project. 
-                    
-                </div>
+                    Undergraduate student at San francisco state University.<br/> Graduating this Fall. <br/>Working as a front end developer
+                for this project.
+            </div>
 
-                <div className="about-picture">
-                    <img src={Picture} />
-                </div>
+                
 
             </div>
-        </div>
+        
     );
 }
 

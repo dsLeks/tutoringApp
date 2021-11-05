@@ -6,22 +6,22 @@ import '../About.css'
 
 const Member4 = () => {
     return (
-       <div className="container">
-         <div>
-         <h1 >Alekhya Gandu</h1>
- 
+       <div className="about-member">
+          <div className="about-picture">
+            <img src={Picture} className='a-img'/>
+         </div>
+         
          <div className="about-info">
+            <h1 >Alekhya Gandu</h1>
             GitHub ID: dsLeks
             <br/> <br/>
             Hello! I'm the Team Lead for Team 7 and the Back End Lead. I'm a first semester grad student at SF State. I'm using Nodejs and Express to build the server.  
          </div>
          
-         <div className="about-picture">
-            <img src={Picture} />
-         </div>
+         
 
          </div>
-       </div>
+   
     );
 }
  
