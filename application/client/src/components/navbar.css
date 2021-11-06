@@ -1,0 +1,24 @@
+.navbarColor {
+    background: mediumpurple;
+}
+
+.navbar-brand {
+    margin-left:25px !important;
+
+}
+.navbar {
+    min-height:10px !important
+}
+
+#thenavbar {
+    background: mediumpurple;
+
+}
+.form-group {
+    width: 800px;
+}
+
+.nav-link {
+    color: white !important;
+    text-shadow: 2px 2px 8px black;
+}
