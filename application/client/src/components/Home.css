@@ -1,0 +1,62 @@
+/*
+    Free images and elements courtesy of Unsplash and FlatIcon
+*/
+
+.body{
+    margin: 0;
+    padding: 0;
+}
+
+.button-background{
+    background-color: #E8E8E8;
+    padding: 20px;
+    width: 100%;
+}
+
+.browse-button{
+    background-color: #FFFF62;
+    color: black;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 80px;
+    margin-right: 80px;
+    font-size: x-large;
+    padding: 10px;
+}
+
+.greeting{
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    outline: auto;
+    padding: 10px;
+}
+
+.text1{
+    background-color: #E8E8E8;
+    text-align: right;
+    font-size: large;
+    font-weight: bold;
+    padding: 50px;
+}
+h4{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.text2{
+    text-align: left;
+    font-size: large;
+    font-weight: bold;
+    padding: 50px;
+}
+
+.a-img{
+    float:left;
+    width: 600px;
+    height: 400px;
+}
+
+.a-img1{
+    float: right;
+}
