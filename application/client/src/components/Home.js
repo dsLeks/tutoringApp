@@ -15,7 +15,7 @@ function Home(){
         <div className="body">
             {/*to check if footer works fine*/}
             <div className="button-background">
-                <div>
+                <div className="b-categories">
                 <Button variant="contained" className="browse-button">Browse by Class</Button>
                 <Button variant="contained" className="browse-button">Browse by Major</Button>
                 <Button variant="contained" className="browse-button">Browse Tutors</Button>

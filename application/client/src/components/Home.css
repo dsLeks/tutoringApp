@@ -11,6 +11,11 @@
     background-color: #E8E8E8;
     padding: 20px;
 }
+.b-categories{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
 .browse-button{
     background-color: #FFFF8F !important;
@@ -58,4 +63,11 @@ h4{
 
 .a-img1{
     float: right;
+}
+
+
+@media screen and (max-width: 480px) {
+    .b-categories{
+        flex-direction: column;
+    }
 }
