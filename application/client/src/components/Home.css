@@ -10,18 +10,17 @@
 .button-background{
     background-color: #E8E8E8;
     padding: 20px;
-    width: 100%;
 }
 
 .browse-button{
-    background-color: #FFFF8F;
-    color: black;
-    font-weight: bold;
-    margin-top: 10px;
-    margin-left: 80px;
-    margin-right: 80px;
-    font-size: x-large;
-    padding: 10px;
+    background-color: #FFFF8F !important;
+    color: black !important;
+    font-weight: bold !important;
+    margin-top: 10px !important;
+    margin-left: 80px !important;
+    margin-right: 80px !important;
+    font-size: x-large !important;
+    padding: 10px !important;
 }
 
 .greeting{
@@ -53,8 +52,7 @@ h4{
 
 .a-img{
     float:left;
-    width: 600px;
-    height: 400px;
+    width: 100%;
 }
 
 .a-img1{
