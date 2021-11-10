@@ -26,6 +26,7 @@
     margin-right: 80px !important;
     font-size: x-large !important;
     padding: 10px !important;
+    border-radius: 10px !important;
 }
 
 .greeting{
@@ -55,13 +56,13 @@ h4{
     padding: 50px;
 }
 
-.a-img{
+.a-img1{
     float:left;
     width: 40% !important;
     height: 40% !important;
 }
 
-.a-img1{
+.a-img2{
     float: right;
 }
 

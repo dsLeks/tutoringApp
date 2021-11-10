@@ -2,7 +2,7 @@ import React from 'react';
 import "./navbar.css"
 import { NavLink } from 'react-router-dom';
 import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
+import {Nav, Navbar, NavDropdown} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.css';
 import Picture from './pictures/logo.png'
 import 'bootstrap/dist/js/bootstrap.bundle';
@@ -33,8 +33,9 @@ class mynavbar extends React.Component{
                         <ul className="nav navbar-nav flex-fill justify-content-center">
 
                         </ul>
-                        {/*NOT WORKING PROPERLY DROP DOWN*/}
-                        <div className="dropdown">
+                        
+                        {/* OLD DROPDOWN */}
+                        {/* <div className="dropdown">
                             <button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu2"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Categories
@@ -44,9 +45,19 @@ class mynavbar extends React.Component{
                                 <li><a className="dropdown-item" href="#">Science</a></li>
                                 <li><a className="dropdown-item" href="#">Math</a></li>
                             </ul>
+                        </div> */}
+
+                        
+                        <div className="dropdown">
+                        <Nav>
+                            <NavDropdown title="Categories" >
+                                <NavDropdown.Item href="#"> Course </NavDropdown.Item>
+                                <NavDropdown.Item href="#"> Major </NavDropdown.Item>
+                                <NavDropdown.Item href="#"> Tutors </NavDropdown.Item>
+                            </NavDropdown>
+                        </Nav>
                         </div>
                         </div>
-                    {/*NOT WORKING PROPERLY DROP DOWN*/}
                         <div className="form-group">
                             <input type="text" className="form-control" placeholder="Search.."/>
                         </div>

@@ -16,7 +16,7 @@ function Home(){
             {/*to check if footer works fine*/}
             <div className="button-background">
                 <div className="b-categories">
-                <Button variant="contained" className="browse-button">Browse by Class</Button>
+                <Button variant="contained" className="browse-button">Browse by Course</Button>
                 <Button variant="contained" className="browse-button">Browse by Major</Button>
                 <Button variant="contained" className="browse-button">Browse Tutors</Button>
                 </div>
@@ -27,7 +27,7 @@ function Home(){
             </div>
 
             <div className="text1">
-            <img src={Picture1} className='a-img'/>
+            <img src={Picture1} className='a-img1'/>
                 <h4>
                     Why use SFSU Tutoring?
                 </h4>
@@ -43,7 +43,7 @@ function Home(){
             </div>
 
             <div className="text2">
-            <img src={Picture2} className='a-img1'/>
+            <img src={Picture2} className='a-img2'/>
                 <h4>
                     <br/>
                     Online Learning available!
