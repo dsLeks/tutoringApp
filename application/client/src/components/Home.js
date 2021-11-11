@@ -16,7 +16,7 @@ function Home(){
             {/*to check if footer works fine*/}
             <div className="button-background">
                 <div className="b-categories">
-                <Button variant="contained" className="browse-button">Browse by Course</Button>
+                <Button variant="contained" className="browse-button">Browse by Class</Button>
                 <Button variant="contained" className="browse-button">Browse by Major</Button>
                 <Button variant="contained" className="browse-button">Browse Tutors</Button>
                 </div>
@@ -25,10 +25,13 @@ function Home(){
             <div className="greeting">
                 Start your journey with SFSU Tutoring today: Find the tutor that is right for you!
             </div>
-
-            <div className="text1">
-            <img src={Picture1} className='a-img1'/>
-                <h4>
+            <div className="text">
+                <div className="text1">
+                <div className= "text1-left">
+                    <img src={Picture1} className='h-img'/>
+                </div >
+                <div className="text1-right">
+                    <h4>
                     Why use SFSU Tutoring?
                 </h4>
                 - Select a tutor from a number of different classes and majors
@@ -40,19 +43,33 @@ function Home(){
                 - View reviews of tutors to find the one that suits your needs
                 <br/><br/>
                 - Get help from fellow SFSU students
+                </div>
+            
+                
             </div>
 
             <div className="text2">
-            <img src={Picture2} className='a-img2'/>
-                <h4>
+                
+                <div className="text2-left">
+                    <h4>
                     <br/>
                     Online Learning available!
                 </h4>
                 We understand that times are tough right now for a lot of students, to make up for this we have opened
                 online tutoring! Book an appointment to meet a tutor virtually through Zoom!
                 <br/>
+                </div>
+                <div className="text2-right">
+                    <img src={Picture2} className='h-img1'/>
+                </div>
+                </div>
+            
+                
                 <Button variant="contained" className="browse-button">Book an Appointment</Button>
             </div>
+
+            
+            
         </div>
     )
 }
