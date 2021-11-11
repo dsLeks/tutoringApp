@@ -58,14 +58,16 @@ function Home(){
                 We understand that times are tough right now for a lot of students, to make up for this we have opened
                 online tutoring! Book an appointment to meet a tutor virtually through Zoom!
                 <br/>
+                <Button variant="contained" className="browse-button">Book an Appointment</Button>
                 </div>
+                
                 <div className="text2-right">
                     <img src={Picture2} className='h-img1'/>
                 </div>
                 </div>
             
                 
-                <Button variant="contained" className="browse-button">Book an Appointment</Button>
+                
             </div>
 
             
