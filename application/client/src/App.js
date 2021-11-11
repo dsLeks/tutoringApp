@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
-import SFSUText from "./Components/SFSUText";  
-import SearchForm from "./Components/SearchForm.js"
-import Footer from "./Components/Footer.js"
+import SFSUText from "./components/SFSUText";  
+import SearchForm from "./components/SearchForm.js"
+import Footer from "./components/Footer.js"
 
 function App() {
   return (
