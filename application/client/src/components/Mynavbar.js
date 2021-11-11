@@ -36,7 +36,7 @@ class mynavbar extends React.Component{
                                     <NavDropdown.Item href="#"> Course </NavDropdown.Item>
                                     <NavDropdown.Item href="#"> Major </NavDropdown.Item>
                                     <NavDropdown.Item href="#"> Tutors </NavDropdown.Item>
-                                    <NavDropdown.Item href="#"> Testing </NavDropdown.Item>
+                                    <NavDropdown.Item href="#"> Hello </NavDropdown.Item>
                                 </NavDropdown>
                             </Nav>
                             <div className="input-group" id="thesearch">
