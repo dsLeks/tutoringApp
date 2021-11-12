@@ -1,0 +1,34 @@
+.navbarColor {
+    background: mediumpurple;
+}
+#navDropDown {
+    background: mediumpurple;
+
+}
+
+#cater-nav {
+    margin-right: 150px;
+}
+
+.navbar {
+    min-height:10px !important
+}
+
+#thenavbar {
+    background: mediumpurple;
+
+}
+
+.form-group {
+    width: 800px;
+}
+
+.nav-link {
+    color: white !important;
+    text-shadow: 2px 2px 8px black;
+}
+
+.dropdown {
+    background-color:#E8E8E8;
+    border-radius: 10px;
+}

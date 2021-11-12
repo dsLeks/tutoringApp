@@ -9,11 +9,11 @@ const url = require('url');
 app.use(express.static('public')); //Serving express files 
 
 
-app.use(express.static(path.join(__dirname, 'build')));
+//app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+//app.get('/*', function (req, res) {
+//  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+//});
 
 //Creating a Connection
 var connection = mysql.createConnection({
@@ -57,9 +57,8 @@ app.get('/onSubmit', function (req,res) {
         
     connection.query(sql,(error,results,fields) => {
         if(error) throw error;
-        const result = JSON.stringify(results)
-        console.log(result);
-        res.send(result);
+        console.log(results);
+        res.json(results);
     })
 })
 
