@@ -1,0 +1,12 @@
+#messageStudent {
+    margin-top:20px;
+    height: 250px;
+}
+
+#navDropDownTutor{
+    background: lightgreen;
+}
+
+.div-inline {
+    display:inline-block;
+}

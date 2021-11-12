@@ -24,20 +24,25 @@ class mynavbar extends React.Component{
                     <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div className="navbar-nav">
                             <a href="/" className="nav-item nav-link active">Home</a>
-                            <a href="/" className="nav-item nav-link">About Us</a>
-                            <a href="/" className="nav-item nav-link">Apply to be a tutor</a>
+                            <a href="/about" className="nav-item nav-link">About Us</a>
+                            <a href="/Apply-Tutor" className="nav-item nav-link">Apply to be a tutor</a>
+                            <a href="/Tutor-Dashboard" className="nav-item nav-link">Dashboard(temp)</a>
 
 
                         </div>
 
                         <form className="d-flex" id="cater-nav">
-                            <Nav >
-                                <NavDropdown title="Categories" id="navDropDown" >
-                                    <NavDropdown.Item href="#"> Course </NavDropdown.Item>
-                                    <NavDropdown.Item href="#"> Major </NavDropdown.Item>
-                                    <NavDropdown.Item href="#"> Tutors </NavDropdown.Item>
-                                </NavDropdown>
-                            </Nav>
+                            <div className="dropdown">
+                                <button className="btn btn-primary dropdown-toggle" type="button"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Categories
+                                </button>
+                                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a className="dropdown-item" href="#">Science</a></li>
+                                    <li><a className="dropdown-item" href="#">Math</a></li>
+                                    <li><a className="dropdown-item" href="#">History</a></li>
+                                </ul>
+                            </div>
                             <div className="input-group" id="thesearch">
                                 <input type="text" className="form-control " placeholder="Search.."/>
                                     <button type="button" className="btn btn-success">Search</button>

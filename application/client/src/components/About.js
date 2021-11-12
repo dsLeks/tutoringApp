@@ -4,7 +4,7 @@ import {Route, Link, Switch, useRouteMatch} from 'react-router-dom';
 
 function About() {
     //Used for routing
-    let {path, url} = useRouteMatch;
+
     return (
 
         <div className="about">
