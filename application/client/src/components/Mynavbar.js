@@ -9,6 +9,7 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/js/bootstrap.js';
 import $ from 'jquery';
+import Searchbar from './SearchBar';
 
 class mynavbar extends React.Component{
     render() {
@@ -33,22 +34,7 @@ class mynavbar extends React.Component{
 
                         </div>
 
-                        <form className="d-flex" id="cater-nav">
-
-                            <select id="formID" className="form-select" aria-label=".form-select-sm example">
-                                <option selected>Select Category</option>
-                                <option value="1">Math</option>
-                                <option value="2">Science</option>
-                                <option value="3">History</option>
-                            </select>
-
-                            <div className="input-group" id="thesearch">
-                                <input type="text" className="form-control " placeholder="Search.."/>
-                                    <button type="button" className="btn btn-success">Search</button>
-                            </div>
-                        </form>
-
-
+                        <Searchbar/>
 
                         <div className="navbar-nav">
                             <a href="#" className="nav-item nav-link">Login</a>
