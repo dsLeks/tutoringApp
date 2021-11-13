@@ -41,17 +41,22 @@ app.get('/onSubmit', function (req,res) {
     const search = queryObject.param2; 
     var sql; 
 
+    if (search.length == 0) {
+        sql = `SELECT * FROM tutor INNER JOIN courses ON tutor.tutorID=courses.tutor`; 
+    } 
 
-    if(category == 'tutors') {
-        sql = `SELECT * FROM tutor WHERE firstName LIKE "${search}%"`;
+    else if(category == 'Tutors') {
+        sql = `SELECT * FROM tutor WHERE firstName LIKE "${search}%" OR lastName LIKE "${search}%" OR courseTeaching LIKE "${search}%"`;
     }
 
     else if(category == 'Courses') {
-        sql = `SELECT * FROM tutor WHERE courseTeaching LIKE "${search}%"`;
+        sql = `SELECT * FROM courses WHERE courseTeaching LIKE "${search}%"`;
     }
 
     else {
-        sql = `SELECT * FROM tutor WHERE firstName LIKE "${search}%" OR courseTeaching LIKE "${search}%"`; 
+        sql = `SELECT tutor.tutorID, tutor.email, tutor.firstName, tutor.lastName, tutor.courseTeaching, tutor.imageReference, courses.courseID, courses.courseDescription 
+        FROM tutor INNER JOIN courses ON tutor.tutorID=courses.tutor
+        WHERE firstName LIKE '${search}%' OR lastName LIKE '${search}%' OR courseTeaching LIKE '${search}%' OR courseDescription LIKE '${search}%';  `; 
     }
     
         

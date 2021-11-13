@@ -16,6 +16,7 @@ class searchbar extends React.Component{
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this); 
     }
 
     handleInputChange(event) {
@@ -29,6 +30,25 @@ class searchbar extends React.Component{
         });
     }
 
+    handleSubmit(event) {
+         event.preventDefault(); 
+         let cat = this.state.selectedCategory;
+         let searchquery = this.state.textSearch; 
+
+         fetch(`/onSubmit?param1=${cat}&param2=${searchquery}`, {
+             method: "GET",
+             headers: {
+                 'Content-type': 'application/json'
+             }
+         })
+         .then((result, err) => result.json())
+         .then(contents => {
+             console.log(contents); //The results are logged on the console of the browser 
+             this.setState( {searchResponse: contents} ); //The results are stored in the state variable searchResponse. Use this state variable to display the output. 
+         });
+     }
+
+
     render(){
         return (
             <form className="d-flex" id="cater-nav">
@@ -41,10 +61,9 @@ class searchbar extends React.Component{
                             value={this.state.selectedCategory}
                             onChange={this.handleInputChange}
                             >
-                                <option selected>Select Category</option>
-                                <option value="1">Math</option>
-                                <option value="2">Science</option>
-                                <option value="3">History</option>
+                                <option selected>Category</option>
+                                <option value="1">Tutors</option>
+                                <option value="2">Courses</option>
                             </select>
 
                             <div className="input-group" id="thesearch">
@@ -54,7 +73,7 @@ class searchbar extends React.Component{
                                 placeholder="Search.."
                                 value={this.state.textSearch}
                                 onChange={this.handleInputChange}/>
-                                    <button type="button" className="btn btn-success">Search</button>
+                                    <button type="button" className="btn btn-success" onClick={this.handleSubmit}>Search</button>
                             </div>
                         </form>
         );
