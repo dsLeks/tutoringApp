@@ -8,6 +8,8 @@ import Picture from './pictures/logo.png'
 import 'bootstrap/dist/js/bootstrap.bundle';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/js/bootstrap.js';
+import $ from 'jquery';
+
 class mynavbar extends React.Component{
     render() {
         return (
@@ -32,17 +34,14 @@ class mynavbar extends React.Component{
                         </div>
 
                         <form className="d-flex" id="cater-nav">
-                            <div className="dropdown">
-                                <button className="btn btn-primary dropdown-toggle" type="button"
-                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Categories
-                                </button>
-                                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a className="dropdown-item" href="#">Science</a></li>
-                                    <li><a className="dropdown-item" href="#">Math</a></li>
-                                    <li><a className="dropdown-item" href="#">History</a></li>
-                                </ul>
-                            </div>
+
+                            <select id="formID" className="form-select" aria-label=".form-select-sm example">
+                                <option selected>Select Category</option>
+                                <option value="1">Math</option>
+                                <option value="2">Science</option>
+                                <option value="3">History</option>
+                            </select>
+
                             <div className="input-group" id="thesearch">
                                 <input type="text" className="form-control " placeholder="Search.."/>
                                     <button type="button" className="btn btn-success">Search</button>
@@ -63,7 +62,12 @@ class mynavbar extends React.Component{
     }
 }
 
-
-
+$("#tableMenu a").on('click', function(e) {
+    e.preventDefault(); // cancel the link behaviour
+    var selText = $(this).text();
+    $("#tableButton").text(selText);
+});
 
 export default mynavbar;
+
+
