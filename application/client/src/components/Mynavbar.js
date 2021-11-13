@@ -37,8 +37,8 @@ class mynavbar extends React.Component{
                         <Searchbar/>
 
                         <div className="navbar-nav">
-                            <a href="#" className="nav-item nav-link">Login</a>
-                            <a href="#" className="nav-item nav-link">Register</a>
+                            <a href="/Login" className="nav-item nav-link">Login</a>
+                            <a href="/Registration" className="nav-item nav-link">Register</a>
                         </div>
                     </div>
                 </div>
