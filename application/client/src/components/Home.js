@@ -18,7 +18,7 @@ function Home(){
                 <div className="b-categories">
                 <Button variant="contained" className="browse-button">Browse by Class</Button>
                 <Button variant="contained" className="browse-button">Browse by Major</Button>
-                <Button variant="contained" className="browse-button">Browse Tutors</Button>
+                <Button variant="contained" className="browse-button" href="/Browse-Tutor">Browse Tutors</Button>
                 </div>
             </div>
             

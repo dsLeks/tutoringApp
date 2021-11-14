@@ -12,3 +12,4 @@ export { default as Tutor} from "./Tutor";
 export { default as ApplyTutor} from "./ApplyTutor";
 export { default as Login} from './Login';
 export { default as Registration} from './Registration';
+export {default as BrowseTutor} from './BrowseTutor';
