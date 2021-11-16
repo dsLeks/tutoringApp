@@ -9,17 +9,16 @@ export default function Search() {
     const [state, setState] = React.useState({});
 
     React.useEffect(() => {
-      //just like compnent did mount
-        setState(history.location.state)
-    }, [])
+            setState(history.location.state)
+    },[history.location.state])
 
-    console.log('state ', history.location.state);
+    console.log('state on search screen ', state)
 
     return (
         <div id="searchComponent">
             {/*<div style={{width:'100vw'}}>*/}
             <div>
-                {state.searchResponse && state.searchResponse.map(searchResponse =>
+                {(state && state.searchResponse && state.searchResponse != undefined && state.searchResponse.length > 0) ? state.searchResponse.map(searchResponse =>
                 
                  /*<table id="tutors" className="search-table">
                      <tr>
@@ -62,11 +61,22 @@ export default function Search() {
                         
                         
                         </ul>
-                    </div>
                         </div>
-                       
+                        
+
+                    </div>
+                    
                 
-              )}
+                )
+            
+                    :
+                    <div style={{height: '50vh', display: 'flex', justifyContent:'center', flexDirection:'column', alignItems:'center'}}>
+                        Nothing found!
+
+                    </div>
+            
+            }
+             
               
             </div>
             

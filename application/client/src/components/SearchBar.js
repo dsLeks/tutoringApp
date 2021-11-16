@@ -17,6 +17,7 @@ export default function SearchBar() {
         selectedCategory: '',
         textSearch: '',
         searchResponse: '',
+        filteredData: [],
     })
 
     const history = useHistory();
@@ -30,13 +31,17 @@ export default function SearchBar() {
        
     }
 
+    ///fetching Api 
+
+
+
     const handleSubmit = async (event) => {
         setCheckSearch(false);
-        event.preventDefault();
+
         let cat = state.selectedCategory;
         let searchquery = state.textSearch;
 
-       const result = await fetch(`/onSubmit?param1=${cat}&param2=${searchquery}`, {
+        await fetch(`/onSubmit?param1=${cat}&param2=${searchquery}`, {
             method: "GET",
             headers: {
                 'Content-type': 'application/json'
@@ -52,15 +57,21 @@ export default function SearchBar() {
 
      }
 
+    console.log('state is ', state);
+    
     React.useEffect(() => {
-        console.log('I m acalled');
+       
         if (checkSearch) {
             history.push({
             pathname: '/SearchTemp',
             state : state,
          })
         }
-     },[state.searchResponse , checkSearch])
+    }, [state.searchResponse, checkSearch])
+    if (!checkSearch) {
+        <div>No data</div>
+    }
+    
 
     
         return (
