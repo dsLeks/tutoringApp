@@ -8,7 +8,11 @@ import Picture from './pictures/logo.png'
 import 'bootstrap/dist/js/bootstrap.bundle';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/js/bootstrap.js';
+import $ from 'jquery';
+import Searchbar from './SearchBar';
+
 class mynavbar extends React.Component{
+   
     render() {
         return (
 
@@ -24,31 +28,19 @@ class mynavbar extends React.Component{
                     <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div className="navbar-nav">
                             <a href="/" className="nav-item nav-link active">Home</a>
-                            <a href="/" className="nav-item nav-link">About Us</a>
-                            <a href="/" className="nav-item nav-link">Apply to be a tutor</a>
-
-
+                            <a href="/about" className="nav-item nav-link">About Us</a>
+                            <a href="/Apply-Tutor" className="nav-item nav-link">Apply to be a tutor</a>
+                            <a href="/Tutor-Dashboard" className="nav-item nav-link">Dashboard(temp)</a>
                         </div>
+                        <div className="navbar-nav">
+                            <a href="/StudentProfile" className="nav-item nav-link">User Profile</a>
+                        </div> 
 
-                        <form className="d-flex" id="cater-nav">
-                            <Nav >
-                                <NavDropdown title="Categories" id="navDropDown" >
-                                    <NavDropdown.Item href="#"> Course </NavDropdown.Item>
-                                    <NavDropdown.Item href="#"> Major </NavDropdown.Item>
-                                    <NavDropdown.Item href="#"> Tutors </NavDropdown.Item>
-                                </NavDropdown>
-                            </Nav>
-                            <div className="input-group" id="thesearch">
-                                <input type="text" className="form-control " placeholder="Search.."/>
-                                    <button type="button" className="btn btn-success">Search</button>
-                            </div>
-                        </form>
-
-
+                        <Searchbar/>
 
                         <div className="navbar-nav">
-                            <a href="#" className="nav-item nav-link">Login</a>
-                            <a href="#" className="nav-item nav-link">Register</a>
+                            <a href="/Login" className="nav-item nav-link">Login</a>
+                            <a href="/Registration" className="nav-item nav-link">Register</a>
                         </div>
                     </div>
                 </div>
@@ -58,7 +50,12 @@ class mynavbar extends React.Component{
     }
 }
 
-
-
+$("#tableMenu a").on('click', function(e) {
+    e.preventDefault(); // cancel the link behaviour
+    var selText = $(this).text();
+    $("#tableButton").text(selText);
+});
 
 export default mynavbar;
+
+

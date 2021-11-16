@@ -32,3 +32,16 @@
     background-color:#E8E8E8;
     border-radius: 10px;
 }
+
+#formID{
+    color:black;
+    margin-right:10px;
+    border-color: red;
+
+}
+
+.form-select {
+    width:300px !important;
+
+}
+
