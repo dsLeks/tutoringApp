@@ -5,52 +5,67 @@ import 'bootstrap/dist/js/bootstrap.bundle';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/js/bootstrap.js';
 import $ from 'jquery';
+import "./SearchBar.css";
 
-class searchbar extends React.Component{
-        constructor(props) {
-        super(props);
-        this.state = {
-            selectedCategory: '',
-            textSearch: '',
-            searchResponse: []
-        };
+import { useHistory } from 'react-router';
 
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this); 
-    }
+export default function SearchBar() {
+    
+    const [checkSearch, setCheckSearch] = React.useState(false);
 
-    handleInputChange(event) {
+    const [state, setState] = React.useState({
+        selectedCategory: '',
+        textSearch: '',
+        searchResponse: '',
+    })
+
+    const history = useHistory();
+
+    const handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;
         const name = target.name;
 
-        this.setState( {
-            ...this.state,
-            [target.name]: value
-        });
+        setState({ ...state, [target.name]: value })
+       
     }
 
-    handleSubmit(event) {
-         event.preventDefault(); 
-         let cat = this.state.selectedCategory;
-         let searchquery = this.state.textSearch; 
+    const handleSubmit = async (event) => {
+        setCheckSearch(false);
+        event.preventDefault();
+        let cat = state.selectedCategory;
+        let searchquery = state.textSearch;
 
-         fetch(`/onSubmit?param1=${cat}&param2=${searchquery}`, {
-             method: "GET",
-             headers: {
-                 'Content-type': 'application/json'
-             }
-         })
-         .then((result, err) => result.json())
-         .then(contents => {
-             console.log(contents); //The results are logged on the console of the browser 
-             this.setState( {searchResponse: contents} ); //The results are stored in the state variable searchResponse. Use this state variable to display the output. 
-         });
+       const result = await fetch(`/onSubmit?param1=${cat}&param2=${searchquery}`, {
+            method: "GET",
+            headers: {
+                'Content-type': 'application/json'
+            }
+        })
+            .then((result, err) => result.json())
+            .then(contents => {console.log('contents are ', contents); //The results are logged on the console of the browser 
+                //The results are stored in the c variable searchResponse. Use this state variable to display the output. 
+                setState({ ...state, searchResponse: contents })
+            }
+            )
+            setCheckSearch(true)
+
      }
 
+    React.useEffect(() => {
+        console.log('I m acalled');
+        if (checkSearch) {
+            history.push({
+            pathname: '/SearchTemp',
+            state : state,
+         })
+        }
+     },[state.searchResponse , checkSearch])
 
-    render(){
+    
         return (
+            <>
+                
             <form className="d-flex" id="cater-nav">
 
                             <select id="formID" 
@@ -58,8 +73,8 @@ class searchbar extends React.Component{
                             name="selectedCategory"
                             type="category"
                             aria-label=".form-select-sm example"
-                            value={this.state.selectedCategory}
-                            onChange={this.handleInputChange}
+                            value={state.selectedCategory}
+                            onChange={handleInputChange}
                             >
                                 <option selected>Category</option>
                                 <option value="1">Tutors</option>
@@ -71,13 +86,19 @@ class searchbar extends React.Component{
                                 name="textSearch"
                                 className="form-control" 
                                 placeholder="Search.."
-                                value={this.state.textSearch}
-                                onChange={this.handleInputChange}/>
-                                    <button type="button" className="btn btn-success" onClick={this.handleSubmit}>Search</button>
-                            </div>
-                        </form>
-        );
-    }
-}
+                                value={state.textSearch}
+                            onChange={handleInputChange} />
+                                    
+                                    <button type="button" className="btn btn-success" onClick={handleSubmit}>Search</button>
+                                                     </div>
+                    
+                    
+                </form>
 
-export default searchbar;
+                <div className="col">
+
+             </div>
+                </>
+        );
+    
+}

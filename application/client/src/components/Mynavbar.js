@@ -12,6 +12,7 @@ import $ from 'jquery';
 import Searchbar from './SearchBar';
 
 class mynavbar extends React.Component{
+   
     render() {
         return (
 
@@ -30,9 +31,10 @@ class mynavbar extends React.Component{
                             <a href="/about" className="nav-item nav-link">About Us</a>
                             <a href="/Apply-Tutor" className="nav-item nav-link">Apply to be a tutor</a>
                             <a href="/Tutor-Dashboard" className="nav-item nav-link">Dashboard(temp)</a>
-
-
                         </div>
+                        <div className="navbar-nav">
+                            <a href="/StudentProfile" className="nav-item nav-link">User Profile</a>
+                        </div> 
 
                         <Searchbar/>
 
