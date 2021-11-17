@@ -1,4 +1,4 @@
-/*.theme {
+.theme {
     max-width: 90%;
     padding: 5px; 
     margin-right: 10px; 
@@ -25,12 +25,11 @@
     position: relative; 
     top: 7px; 
 }
-
 .col {
-    overflow: scroll; 
+    
     margin-left: auto; 
     margin-right: auto; 
-    height: 500px; 
+     
 }
 
 #tutors td, #customers th {
@@ -46,9 +45,6 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #a85170;
+    background-color: #1e086e;
     color: white;
   }
-
-  */
-
