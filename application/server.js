@@ -58,7 +58,7 @@ app.get('/onSubmit', function (req,res) {
     else {
         sql = `SELECT tutor.tutorID, tutor.email, tutor.firstName, tutor.lastName, tutor.courseTeaching, tutor.imageReference, courses.courseID, courses.courseDescription 
         FROM tutor INNER JOIN courses ON tutor.tutorID=courses.tutor
-        WHERE firstName LIKE '${search}%' OR lastName LIKE '${search}%' OR courseTeaching LIKE '${search}%' OR courseDescription LIKE '${search}%';  `; 
+        WHERE firstName LIKE '${search}%' OR lastName LIKE '${search}%' OR courseTeaching LIKE '${search}%' OR courseDescription LIKE '${search}%'`; 
     }
     
         
