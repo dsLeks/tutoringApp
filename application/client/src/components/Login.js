@@ -8,11 +8,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import "./Registration.css";
 
-const validateInfo =
-  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 const schema = yup.object().shape({
-  email: yup.string().matches(validateInfo, "Please enter SFSU email"),
+  email: yup
+    .string()
+    .max(40, "Maximum Character only 40")
+    .matches(/^([a-zA-Z0-9_-]+)(@mail.sfsu.edu)$/, "Email must be SFSU email"),
   password: yup
     .string()
     .min(8, "Minimum 8 character")

@@ -13,7 +13,7 @@ import "./Registration.css";
 const phonevalid =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
-const validateInfo = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 
 /*function validateEmail(email) {
   return /^\"?[\w-_\.]*\"?@mail\.sfsu$/.test(email);
@@ -25,20 +25,30 @@ const schema = yup.object().shape({
     .string()
     .max(40, "Maximum Character only 40")
     .min(1, "Field cannot be Empty")
-    .required(),
+    .required("Field cannot be Empty"),
   lastName: yup
     .string()
     .required()
     .max(40, "Maximum Character only 40")
     .min(1, "Field cannot be Empty"),
   //{/*email: yup.string().email().required().max(40),*/}
-  email: yup.string().matches(validateInfo, "Please enter SFSU email"),
-  phoneNo: yup.string().matches(phonevalid, "Phone number is not valid"),
+  email: yup
+    .string()
+    .max(40, "Maximum Character only 40")
+    .matches(/^([a-zA-Z0-9_-]+)(@mail.sfsu.edu)$/, "Email must be SFSU email"),
+  phoneNo: yup
+    .string()
+    .max(40, "Maximum Character only 40")
+    .matches(phonevalid, "Phone number is not valid"),
   password: yup
     .string()
     .min(8, "Minimum 8 character")
     .max(15, "Maximum 15 character")
-    .required(),
+    .required()
+    .matches(
+      /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+      "Password must contain at least 8 characters, one uppercase, one number and one special case character"
+    ),
   confirmPassword: yup.string().oneOf([yup.ref("password"), null]),
 });
 
@@ -73,7 +83,7 @@ function Registration() {
                     class="form-control"
                     name="firstName"
                     placeholder="First Name"
-                    {...register("firstName", { required: true })}
+                    {...register("firstName", { required: true, })}
                   ></input>
                   <p>
                     {/*errors.firstName?.message*/}
