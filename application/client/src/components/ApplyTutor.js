@@ -79,7 +79,6 @@ function ApplyTutor() {
                             {/* Upload button for credentials of the tutor */}
                             <input
                                 type="file"
-                                accept="image/*"
                                 style={{ display: 'none' }}
                                 id="contained-button-file"
                             />
