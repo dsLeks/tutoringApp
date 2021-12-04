@@ -20,20 +20,14 @@ function ApplyTutor() {
                             <h3 class="text-center display-5">Apply to be a Tutor</h3>
 
                         <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels"><h5>First Name</h5></label><input type="text" class="form-control" placeholder="first name" ></input></div>
-                            <div class="col-md-6"><label class="labels"><h5>Last Name</h5></label><input type="text" class="form-control"  placeholder="last name"></input></div>
+                            <div class="col-md-6"><label class="labels"><h5>First Name</h5></label><input type="text" class="form-control" placeholder="First Name" ></input></div>
+                            <div class="col-md-6"><label class="labels"><h5>Last Name</h5></label><input type="text" class="form-control"  placeholder="Last Name"></input></div>
                         </div>
-                        <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels"><h5>Mobile Number</h5></label><input type="text" class="form-control" placeholder="enter phone number (xxx) xxx-xxxx" ></input></div>
-                            <div class="col-md-12"><label class="labels"><h5>Address</h5></label><input type="text" class="form-control" placeholder="enter address line 1" ></input></div>
-                            <div class="col-md-12"><label class="labels"><h5>City</h5></label><input type="text" class="form-control" placeholder="enter city (San Francisco, Oakland, etc.)" ></input></div>
-                            <div class="col-md-12"><label class="labels"><h5>State</h5></label><input type="text" class="form-control" placeholder="enter state (CA, NY, etc.)" ></input></div>
-                        </div>
-
                         <br/>
 
-                            {/* Dropdown menu to choose major department not working properly */}
-                            <div class="d-flex justify-content-between align-items-center experience"><span><h4>Choose Class(es)</h4></span></div>
+                        {/* Removed address, phone number, and date availaibility fields to match those with the table on the back end */}
+                        {/* Dropdown menu to choose major department not working properly */}
+                        <div class="d-flex justify-content-between align-items-center experience"><span><h4>Choose Class(es)</h4></span></div>
                             <div className="dropdown d-inline-block">
                             <button className={`btn btn-danger dropdown-toggle`} type="button"
                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -45,20 +39,11 @@ function ApplyTutor() {
                                 <li><a className="dropdown-item" href="#">History</a></li>
                             </ul>
                         </div>
+                        <br/><br/>
                         <div class="col-md-12"><label class="labels"><h5>Classes 1 (Required) </h5></label><input type="text" class="form-control" placeholder="required (CSC, BIO MATH, etc.)" ></input></div>
                         <div class="col-md-12"><label class="labels"><h5>Classes 2 (Optional) </h5></label><input type="text" class="form-control" placeholder="optional (CSC, BIO MATH, etc.)" ></input></div>
                         <div className="col-md-12"><label className="labels"><h5>Classes 3 (Optional) </h5></label><input type="text" className="form-control" placeholder="optional (CSC, BIO MATH, etc.)" ></input>
                         </div>
-
-                        {/* Commented out data availability, may be too difficult to implement on the back end */}
-                        {/* <div className="row">
-                            <div className="col-md-13">
-                                <Form.Group controlId="dob">
-                                    <Form.Label>Select Date Availability</Form.Label>
-                                    <Form.Control type="date" name="dob" placeholder="" />
-                                </Form.Group>
-                            </div>
-                        </div> */}
 
                         <div className="mt-5 text-center">
                             {/* Upload button for profile picture of the tutor */}
