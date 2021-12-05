@@ -1,9 +1,11 @@
 .profile-button{
-    background-color: blueviolet !important;
+    background-color: white !important;
+    color: black !important;    
 }
 
 .profile-button:hover {
-    background: purple !important
+    outline-style: solid;
+    outline-color: black;
 }
 
 
@@ -12,4 +14,11 @@
     color: #fff;
     cursor: pointer;
     border: solid 4px #BA68C8
+}
+
+.desc{
+    width: 525px;
+    height: 150px;
+    text-align: left !important;
+    vertical-align: top !important;
 }
