@@ -19,6 +19,22 @@ function ApplyTutor() {
                     <div class="">
                             <h3 class="text-center display-5">Apply to be a Tutor</h3>
 
+                            <div className="mt-5 text-center">
+                            {/* Upload button for profile picture of the tutor */}
+                            <input
+                                type="file"
+                                accept="image/*"
+                                style={{ display: 'none' }}
+                                id="contained-button-file"
+                            />
+                            <label htmlFor="contained-button-file">
+                                <Button variant="contained" color="primary" component="span" class="btn btn-primary profile-button" style={{textTransform: 'none'}}>
+                                <h6>Upload Profile Picture</h6>
+                                </Button>
+                                </label>
+                        </div>
+
+                        <br/>
                         <div class="row mt-2">
                             <div class="col-md-6"><label class="labels"><h5>First Name</h5></label><input type="text" class="form-control" placeholder="First Name" ></input></div>
                             <div class="col-md-6"><label class="labels"><h5>Last Name</h5></label><input type="text" class="form-control"  placeholder="Last Name"></input></div>
@@ -46,21 +62,6 @@ function ApplyTutor() {
                         </div>
 
                         <div className="mt-5 text-center">
-                            {/* Upload button for profile picture of the tutor */}
-                            <input
-                                type="file"
-                                accept="image/*"
-                                style={{ display: 'none' }}
-                                id="contained-button-file"
-                            />
-                            <label htmlFor="contained-button-file">
-                                <Button variant="contained" color="primary" component="span" style={{textTransform: 'none'}}>
-                                <h6>Upload Profile Picture</h6>
-                                </Button>
-                                </label>
-                        </div>
-
-                        <div className="mt-5 text-center">
                             {/* Upload button for credentials of the tutor */}
                             <input
                                 type="file"
@@ -68,7 +69,7 @@ function ApplyTutor() {
                                 id="contained-button-file"
                             />
                             <label htmlFor="contained-button-file">
-                                <Button variant="contained" color="primary" component="span" style={{textTransform: 'none'}}>
+                                <Button class="btn btn-primary profile-button" variant="contained" color="primary" component="span" style={{textTransform: 'none'}}>
                                 <h6>Upload Resume/Credentials</h6>
                                 </Button>
                             </label>

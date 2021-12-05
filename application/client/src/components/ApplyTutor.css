@@ -1,6 +1,9 @@
+.profile-button{
+    background-color: blueviolet !important;
+}
 
 .profile-button:hover {
-    background: #682773
+    background: purple !important
 }
 
 
