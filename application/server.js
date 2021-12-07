@@ -32,7 +32,7 @@ connection.connect(function(error) {
     console.log('MySql is Connected')
 })
 
-//creating a get route
+//creating a get route and implementation of query logic 
 app.get('/onSubmit', function (req,res) {
     const queryObject = url.parse(req.url,true).query; //Getting Parameters
     console.log(queryObject); //Console Logging the Parameters
