@@ -8,6 +8,7 @@ import Picture from './pictures/logo.png'
 import 'bootstrap/dist/js/bootstrap.bundle';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/js/bootstrap.js';
+import Button from 'react-bootstrap/Button';
 import $ from 'jquery';
 import Searchbar from './SearchBar';
 
@@ -27,20 +28,17 @@ class mynavbar extends React.Component{
                     </button>
                     <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div className="navbar-nav">
-                            <a href="/" className="nav-item nav-link active">Home</a>
-                            <a href="/about" className="nav-item nav-link">About Us</a>
-                            <a href="/Apply-Tutor" className="nav-item nav-link">Apply to be a tutor</a>
-                            <a href="/Tutor-Dashboard" className="nav-item nav-link">Dashboard(temp)</a>
-                        </div>
-                        <div className="navbar-nav">
-                            <a href="/StudentProfile" className="nav-item nav-link">User Profile</a>
+                            <Button href="/about" className="nav-item nav-link">About Us</Button>
+                            <Button href="/Apply-Tutor" className="nav-item nav-link">Apply to be a tutor</Button>
+                            <Button href="/Tutor-Dashboard" className="nav-item nav-link">Dashboard(temp)</Button>
+                            <Button href="/StudentProfile" className="nav-item nav-link">User Profile</Button>
                         </div> 
 
                         <Searchbar/>
 
                         <div className="navbar-nav">
-                            <a href="/Login" className="nav-item nav-link">Login</a>
-                            <a href="/Registration" className="nav-item nav-link">Register</a>
+                            <Button href="/Login" className="nav-item nav-link">Login</Button>
+                            <Button href="/Registration" className="nav-item nav-link">Register</Button>
                         </div>
                     </div>
                 </div>

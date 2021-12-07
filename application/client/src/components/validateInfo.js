@@ -1,4 +1,5 @@
-export default function validateInfo(values){
+/*
+export default function validateInfo(values) {
     let errors = {}
 
     if(!values.email.trim()){
@@ -8,3 +9,4 @@ export default function validateInfo(values){
     }
     return errors;
 }
+*/
