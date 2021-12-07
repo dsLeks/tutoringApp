@@ -31,8 +31,6 @@ class mynavbar extends React.Component{
                             <Button href="/about" className="nav-item nav-link">About Us</Button>
                             <Button href="/Apply-Tutor" className="nav-item nav-link">Apply to be a tutor</Button>
                             <Button href="/Tutor-Dashboard" className="nav-item nav-link">Dashboard(temp)</Button>
-                        </div>
-                        <div className="navbar-nav">
                             <Button href="/StudentProfile" className="nav-item nav-link">User Profile</Button>
                         </div> 
 

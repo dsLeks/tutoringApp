@@ -29,6 +29,7 @@
     border-radius: 15px !important;
     margin: 3px !important;
     background-color: blueviolet !important;
+    max-width: 70% !important;
 }
 
 .nav-link:hover{
