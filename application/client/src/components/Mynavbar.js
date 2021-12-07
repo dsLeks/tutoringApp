@@ -3,11 +3,13 @@ import "./navbar.css"
 import { NavLink } from 'react-router-dom';
 import Container from "react-bootstrap/Container";
 import {Nav, Navbar, NavDropdown} from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 import Picture from './pictures/logo.png'
-import 'bootstrap/dist/js/bootstrap.bundle';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import 'bootstrap/dist/js/bootstrap.js';
+// import 'bootstrap/dist/js/bootstrap.bundle';
+// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+// import 'bootstrap/dist/js/bootstrap.js';
+// import 'jquery/dist/jquery.min';
+import Button from 'react-bootstrap/Button';
 import $ from 'jquery';
 import Searchbar from './SearchBar';
 
@@ -21,26 +23,26 @@ class mynavbar extends React.Component{
                     <a className="navbar-brand" href="/">
                         <img src={Picture} width="80" height="55" alt="" />
                                       </a>
+
+
+
                     <button type="button" className="navbar-toggler" data-bs-toggle="collapse"
                             data-bs-target="#navbarCollapse">
-                        <span className="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon"/>
                     </button>
-                    <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse" data-target=".navbar-collapse">
                         <div className="navbar-nav">
-                            <a href="/" className="nav-item nav-link active">Home</a>
-                            <a href="/about" className="nav-item nav-link">About Us</a>
-                            <a href="/Apply-Tutor" className="nav-item nav-link">Apply to be a tutor</a>
-                            <a href="/Tutor-Dashboard" className="nav-item nav-link">Dashboard(temp)</a>
-                        </div>
-                        <div className="navbar-nav">
-                            <a href="/StudentProfile" className="nav-item nav-link">User Profile</a>
+                            <Button href="/about" className="nav-item nav-link btn-outline-dark">About Us</Button>
+                            <Button href="/Apply-Tutor" className="nav-item nav-link btn-outline-dark">Apply to be a tutor</Button>
+                            <Button href="/Tutor-Dashboard" className="nav-item nav-link btn-outline-dark">Dashboard(temp)</Button>
+                            <Button href="/StudentProfile" className="nav-item nav-link btn-outline-dark">User Profile</Button>
                         </div> 
 
                         <Searchbar/>
 
                         <div className="navbar-nav">
-                            <a href="/Login" className="nav-item nav-link">Login</a>
-                            <a href="/Registration" className="nav-item nav-link">Register</a>
+                            <Button href="/Login" className="nav-item nav-link btn-outline-dark">Login</Button>
+                            <Button href="/Registration" className="nav-item nav-link btn-outline-dark">Register</Button>
                         </div>
                     </div>
                 </div>

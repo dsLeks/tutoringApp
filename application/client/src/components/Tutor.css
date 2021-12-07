@@ -10,3 +10,8 @@
 .div-inline {
     display:inline-block;
 }
+
+option {
+    color:black !important;
+    background-color:white !important;
+}
