@@ -1,8 +1,8 @@
 .navbarColor {
-    background: mediumpurple;
+    background: mediumpurple
 }
 #navDropDown {
-    background: mediumpurple;
+    background: mediumpurple
 
 }
 
@@ -26,12 +26,14 @@
 .nav-link {
     color: white !important;
     text-shadow: 2px 2px 8px black;
-    border-radius: 15px !important;
     margin: 3px !important;
-    background-color: blueviolet !important;
     max-width: 70% !important;
 }
+.nav-item {
 
+    background-color: mediumpurple !important;
+
+}
 .nav-link:hover{
     background-color: purple !important;
 }
@@ -47,9 +49,9 @@
 }
 
 #formID{
-    color:black;
+
     margin-right:10px;
-    border-color: red;
+
 
 }
 

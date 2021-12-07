@@ -1,9 +1,9 @@
 import React from 'react';
 import "./navbar.css";
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/js/bootstrap.bundle';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import 'bootstrap/dist/js/bootstrap.js';
+// import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/js/bootstrap.bundle';
+// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+// import 'bootstrap/dist/js/bootstrap.js';
 import $ from 'jquery';
 import "./SearchBar.css";
 
@@ -80,7 +80,7 @@ export default function SearchBar() {
             <form className="d-flex" id="cater-nav">
 
                             <select id="formID" 
-                            className="form-select" 
+                            className=" form-select"
                             name="selectedCategory"
                             type="category"
                             aria-label=".form-select-sm example"
