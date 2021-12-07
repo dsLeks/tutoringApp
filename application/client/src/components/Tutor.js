@@ -1,10 +1,10 @@
 
 import './Tutor.css';
 import Picture from './pictures/math-teacher-vector.png'
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/js/bootstrap.bundle';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import 'bootstrap/dist/js/bootstrap.js';
+// import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/js/bootstrap.bundle';
+// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+// import 'bootstrap/dist/js/bootstrap.js';
 import React from "react";
 
 
@@ -12,6 +12,8 @@ function Tutor() {
 
     return (
         <div class="container rounded bg-white mt-5 mb-5">
+
+
             <div class="row">
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img className="rounded-circle img-thumbnail mt-5 border border-success" width="200px" src={Picture}></img>
@@ -30,18 +32,21 @@ function Tutor() {
 
 
                         <div class="row mt-2">
-                            <div class="col-md-10">Message Students &ensp;
+                            <div class="col-md-10">Message Students
 
-                                <div className="dropdown d-inline-block">
-                                    <button className="btn btn-success dropdown-toggle" type="button"
-                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Students
-                                    </button>
-                                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li><a className="dropdown-item" href="#">Michael</a></li>
-                                        <li><a className="dropdown-item" href="#">Billy</a></li>
-                                        <li><a className="dropdown-item" href="#">John</a></li>
-                                    </ul>
+                                <div >
+
+                                        <select  id="categoryDROPDOWN"
+                                                className="form-select"
+                                                name="selectedCategory"
+                                                type="category"
+                                                aria-label=".form-select-sm example">
+                                            <option selected>List of Students</option>
+                                            <option value="1">Michael</option>
+                                            <option value="2">Billy</option>
+                                            <option value="2">Johnny</option>
+                                        </select>
+
                                 </div>
 
                                 <textarea id="messageStudent" type="text" class="form-control"  placeholder="Send Message.."/>
