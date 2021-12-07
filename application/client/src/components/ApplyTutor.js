@@ -22,19 +22,62 @@ function ApplyTutor() {
                             <h6 class="text-center">(All fields required)</h6>
 
                         <div>
-                            <div><label class="labels"><h5>First Name</h5></label><input required type="text" class="form-control" placeholder="First Name" ></input></div>
-                            <div><label class="labels"><h5>Last Name</h5></label><input required type="text" class="form-control"  placeholder="Last Name"></input></div>
-                            <div><label class="labels"><h5>SFSU E-mail</h5></label><input required type="text" class="form-control"  placeholder="yourname@mail.sfsu.edu"></input></div>
-
+                            <div>
+                                <label class="labels"><h5>First Name</h5></label>
+                                <input 
+                                    required type="text" 
+                                    class="form-control" 
+                                    placeholder="First Name">
+                                </input>
+                            </div>
+                            <div>
+                                <label class="labels">
+                                    <h5>Last Name</h5></label>
+                                    <input 
+                                        required type="text" 
+                                        class="form-control"  
+                                        placeholder="Last Name">
+                                    </input>
+                            </div>
+                            <div>
+                                <label class="labels"><h5>SFSU E-mail</h5></label>
+                                <input 
+                                required type="text" 
+                                class="form-control"  
+                                placeholder="yourname@mail.sfsu.edu">
+                                </input>
+                            </div>
                         </div>
                         <br/>
 
                         {/* Removed address, phone number, major department dropdown menu, 2 optional classes, and date availaibility fields to match those with the table on the back end */}
                         {/* Added text fields for major/course to tutor, added description text field*/}
-                        <div class="col-md-12"><label class="labels"><h5>Major to tutor</h5></label><input required type="text" class="form-control" placeholder="required (CSC, BIO, MATH, etc.)" ></input></div>
-                        <div class="col-md-12"><label class="labels"><h5>Course to tutor</h5></label><input required type="text" class="form-control" placeholder="required (CSC510, BIO100 MATH325, etc.)" ></input></div>
+                        <div class="col-md-12">
+                            <label class="labels"><h5>Major to tutor</h5></label>
+                            <input 
+                            required type="text" 
+                            class="form-control"
+                            placeholder="required (CSC, BIO, MATH, etc.)" >
+                            </input>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels"><h5>Course to tutor</h5></label>
+                            <input 
+                            required type="text" 
+                            class="form-control" 
+                            placeholder="required (CSC510, BIO100 MATH325, etc.)">
+                            </input>
+                        </div>
                         <br/>
-                        <div class="col-md-12"><label class="labels"><h5>Description</h5></label><br/><textarea required type="text" class="form-control" className="desc" placeholder="Tell us about yourself..." ></textarea></div>
+                        <div class="col-md-12">
+                            <label class="labels"><h5>Description</h5></label><br/>
+                            <textarea 
+                            required type="text" 
+                            class="form-control" 
+                            className="desc" 
+                            placeholder="Tell us about yourself..." >
+                            </textarea>
+                        </div>
                         
 
                         <div className="mt-5 text-center">
