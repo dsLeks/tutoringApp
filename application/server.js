@@ -31,27 +31,10 @@ connection.connect(function (error) {
   console.log("MySql is Connected");
 });
 
-<<<<<<< HEAD
-//creating a get route and implementation of query logic 
-app.get('/onSubmit', function (req,res) {
-    const queryObject = url.parse(req.url,true).query; //Getting Parameters
-    console.log(queryObject); //Console Logging the Parameters
-    
-    const category = queryObject.param1;
-    console.log(category);
-    const search = queryObject.param2; 
-    console.log(search); 
-    var sql; 
-
-    if (search.length == 0) {
-        sql = `SELECT * FROM tutor INNER JOIN courses ON tutor.tutorID=courses.tutor`; 
-    } 
-=======
-//creating a get route
+//creating a get route for the Search Query -- Needs fixing. 
 app.get("/onSubmit", function (req, res) {
   const queryObject = url.parse(req.url, true).query; //Getting Parameters
   console.log(queryObject); //Console Logging the Parameters
->>>>>>> FEdevelop
 
   const category = queryObject.param1;
   console.log(category);
@@ -68,18 +51,6 @@ app.get("/onSubmit", function (req, res) {
   } else {
     sql = `SELECT tutor.tutorID, tutor.email, tutor.firstName, tutor.lastName, tutor.courseTeaching, tutor.imageReference, courses.courseID, courses.courseDescription 
         FROM tutor INNER JOIN courses ON tutor.tutorID=courses.tutor
-<<<<<<< HEAD
-        WHERE firstName LIKE '${search}%' OR lastName LIKE '${search}%' OR courseTeaching LIKE '${search}%' OR courseDescription LIKE '${search}%'`; 
-    }
-    
-        
-    connection.query(sql,(error,results,fields) => {
-        if(error) throw error;
-        console.log(results);
-        res.json(results);
-    })
-})
-=======
         WHERE firstName LIKE '${search}%' OR lastName LIKE '${search}%' OR courseTeaching LIKE '${search}%' OR courseDescription LIKE '${search}%';  `;
   }
 
@@ -89,7 +60,64 @@ app.get("/onSubmit", function (req, res) {
     res.json(results);
   });
 });
->>>>>>> FEdevelop
+
+//Creating a post route for the Registration
+app.post('/register', (req, res) => {
+  console.log("Got body: ", req.body); 
+  const data = req.body; 
+  var sql; 
+  const saltRounds = 10; 
+
+  bcrypt.hash(data.password, saltRounds, (err, hash) => {
+      sql = `INSERT INTO user (firstName, lastName, email, password) VALUES ('${data.firstName}', '${data.lastName}', '${data.email}', '${hash}')`;
+      connection.query(sql, (error, results, fields) => {
+          if(error) console.log("Error in Insert into User /register");
+          console.log(results); 
+      })
+  })
+
+  res.json({
+      status: 'sucess'
+  }); 
+})
+
+//Creating a post route for the login verification -- Post is used to ensure security so that the login data is secure 
+app.post('/login', (req,res) => {
+  console.log("Body for Login is: ", req.body);
+  const data = req.body; 
+
+  sql = `SELECT password FROM user WHERE email = '${data.email}'`;
+  connection.query(sql, (error, results, fields) => {
+      if(error) console.log("Error in Select query /login");
+      console.log(results);
+      
+      if(results.length < 1) {
+          res.json({
+              status: 'User does not exist'
+          })
+      }
+      else {
+          bcrypt.compare(data.password, results[0].password, (err,result) => {
+              console.log(result); 
+              if(result == true) {
+                  res.json({
+                      status: 'User has been Authenticated!'
+                  })
+              }
+              else {
+                  res.json({
+                      status: "User Does Not Exist! Password or Username does not exist!"
+                  })
+              }
+          })
+      }
+  })
+
+})
+
+
+
+
 
 //Creating a Listening Port
 app.listen(port, () => {
