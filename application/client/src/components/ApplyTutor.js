@@ -103,7 +103,7 @@ function ApplyTutor() {
                         {/* Removed address, phone number, major department dropdown menu, 2 optional classes, and date availaibility fields to match those with the table on the back end */}
                         {/* Added text fields for major/course to tutor, added description text field*/}
                         <div class="col-md-12">
-                            <label class="labels"><h5>Major to tutor</h5></label>
+                            <label class="labels"><h5>Major to Tutor</h5></label>
                             <input 
                             required type="text" 
                             class="form-control"
@@ -113,7 +113,7 @@ function ApplyTutor() {
                             <p>{errors.major?.message}</p>
                         </div>
                         <div class="col-md-12">
-                            <label class="labels"><h5>Course to tutor</h5></label>
+                            <label class="labels"><h5>Course to Tutor</h5></label>
                             <input 
                             required type="text" 
                             class="form-control" 
@@ -163,11 +163,11 @@ function ApplyTutor() {
                             <input
                                 type="file"
                                 style={{ display: 'none' }}
-                                id="contained-button-file"
+                                id="contained-button-file1"
                                 multiple
                                 {...register("resume", {required:true})}
                             />
-                            <label htmlFor="contained-button-file">
+                            <label htmlFor="contained-button-file1">
                                 <Button class="btn btn-primary profile-button1" 
                                 className="profile-button1" 
                                 variant="contained" 
