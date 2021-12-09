@@ -31,7 +31,7 @@ connection.connect(function (error) {
   console.log("MySql is Connected");
 });
 
-//creating a get route for the Search Query -- Needs fixing. 
+//creating a get route for the Search Query -- Needs fixing -- Mention number of rows found i.e. total found! 
 app.get("/onSubmit", function (req, res) {
   const queryObject = url.parse(req.url, true).query; //Getting Parameters
   console.log(queryObject); //Console Logging the Parameters
