@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useContext } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 // import 'bootstrap/dist/js/bootstrap.bundle'
 // import 'bootstrap/dist/js/bootstrap.bundle.min.js'
@@ -7,7 +8,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import "./Registration.css";
-
+import axios from "axios";
+import { AppContext } from "../AppContext";
 
 const schema = yup.object().shape({
   email: yup
@@ -21,67 +23,81 @@ const schema = yup.object().shape({
     .required(),
 });
 
+function Login(props) {
+  const loggedInUser = useContext(AppContext);
 
+  console.log(loggedInUser);
+  const [loginStatus, setLoginStatus] = useState("");
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const onSubmit = async (data) => {
+    console.log({ data });
+    const res = await axios.post(
+      `http://localhost:3001/login?email=${data.email}&&password=${data.password}`
+    );
+    console.log(res.data.data[0]);
+    loggedInUser.setLoggedInUser(res.data.data[0]);
+    if (res.data.status != "User does not exist") {
+      setLoginStatus(res.data.message);
+      props.history.push("/StudentProfile");
+    } else {
+      setLoginStatus(res.data[0]);
+    }
+    //props.history.push("/StudentProfile");
+  };
 
-function Login() {
-    const {
-      register,
-      handleSubmit,
-      watch,
-      formState: { errors },
-    } = useForm({
-      resolver: yupResolver(schema),
-    });
-    const onSubmit = (data) => {
-      console.log({ data });
-    };
+  return (
+    <div class="container rounded-5 bg-white mt-5 mb-5">
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
+        <div class="row">
+          <div class="col-md-3 border-right"></div>
+          <div class="col-md-5 border-right">
+            <div class="">
+              <h3 class="text-center display-5">Login</h3>
 
-    return (
-      <div class="container rounded-5 bg-white mt-5 mb-5">
-        <form className="form" onSubmit={handleSubmit(onSubmit)}>
-          <div class="row">
-            <div class="col-md-3 border-right"></div>
-            <div class="col-md-5 border-right">
-              <div class="">
-                <h3 class="text-center display-5">Login</h3>
-
-                <div class="row mt-3">
-                  <div>
-                    <label class="labels">SFSU E-mail</label>
-                    <input
-                      required
-                      type="email"
-                      class="form-control"
-                      placeholder="SFSU E-Mail"
-                      {...register("email", { required: true })}
-                    ></input>
-                    <p>{errors.email && "Please enter SFSU email"}</p>
-                  </div>
-                  <div>
-                    <label class="labels">Password</label>
-                    <input
-                      required
-                      type="password"
-                      class="form-control"
-                      placeholder="Last Name"
-                      {...register("password", { required: true })}
-                    ></input>
-                    <p>{errors.password?.message}</p>
-                  </div>
+              <div class="row mt-3">
+                <div>
+                  <label class="labels">SFSU E-mail</label>
+                  <input
+                    required
+                    type="email"
+                    class="form-control"
+                    placeholder="SFSU E-Mail"
+                    {...register("email", { required: true })}
+                  ></input>
+                  <p>{errors.email && "Please enter SFSU email"}</p>
                 </div>
-                <div class="mt-5 text-center">
-                  <button class="btn btn-primary profile-button" type="submit">
-                    Login{" "}
-                  </button>
+                <div>
+                  <label class="labels">Password</label>
+                  <input
+                    required
+                    type="password"
+                    class="form-control"
+                    placeholder="Last Name"
+                    {...register("password", { required: true })}
+                  ></input>
+                  <p>{errors.password?.message}</p>
                 </div>
+              </div>
+              <div class="mt-5 text-center">
+                <button class="btn btn-primary profile-button" type="submit">
+                  Login{" "}
+                </button>
               </div>
             </div>
           </div>
-          <div></div>
-        </form>
-      </div>
-    );
+        </div>
+        <div></div>
+      </form>
+      <p>{setLoginStatus}</p>
+    </div>
+  );
 }
-
 
 export default Login;

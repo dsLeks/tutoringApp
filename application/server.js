@@ -5,6 +5,8 @@ const port = 3001;
 const app = express();
 require("dotenv").config();
 const url = require("url");
+const cors = require("cors");
+const bcrypt = require("bcrypt");
 
 app.use(express.static("public")); //Serving express files
 
@@ -13,6 +15,9 @@ app.use(express.static("public")); //Serving express files
 //app.get('/*', function (req, res) {
 //  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 //});
+
+app.use(express.json());
+app.use(cors());
 
 //Creating a Connection
 var connection = mysql.createConnection({
@@ -61,6 +66,67 @@ app.get("/onSubmit", function (req, res) {
   });
 });
 
+//Creating a post route for the Registration
+app.post("/registeration", (req, res) => {
+  console.log("Got body: ", req.body);
+  const data = req.query;
+  var sql;
+  const saltRounds = 10;
+
+  bcrypt.hash(data.password, saltRounds, (err, hash) => {
+    sql = `INSERT INTO user (firstName, lastName, email, password) VALUES ('${data.firstName}', '${data.lastName}', '${data.email}', '${hash}')`;
+    connection.query(sql, (error, results, fields) => {
+      if (error) console.log("Error in Insert into User /register");
+      console.log(results);
+    });
+  });
+
+  res.json({
+    status: "sucess",
+  });
+});
+
+//Creating a post route for the login verification -- Post is used to ensure security so that the login data is secure
+app.post("/login", (req, res) => {
+  console.log("Body for Login is: ", req.query);
+  const data = req.query;
+
+  sql = `SELECT password FROM user WHERE email = '${data.email}'`;
+  connection.query(sql, (error, results, fields) => {
+    if (error) console.log("Error in Select query /login");
+    console.log(results);
+
+    if (results.length < 1) {
+      res.json({
+        status: "User does not exist",
+      });
+    } else {
+      bcrypt.compare(data.password, results[0].password, (err, result) => {
+        console.log(results[0].password);
+        if (result == true) {
+          sql = `SELECT * FROM user WHERE password = '${results[0].password}'`;
+          connection.query(sql, (error, results, fields) => {
+            if (results) {
+              res.json({
+                data: results,
+              });
+            } else {
+              res.json({
+                status: "User has been Authenticated!",
+                loggedIn: true,
+              });
+            }
+          });
+
+          //  else {
+          //   res.json({
+          //     status: "User Does Not Exist! Password or Username does not exist!",
+          //   });
+        }
+      });
+    }
+  });
+});
 //Creating a Listening Port
 app.listen(port, () => {
   console.log("Listening on Port 3001");
