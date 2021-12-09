@@ -60,12 +60,14 @@ const Mynavbar = () => {
             >
               Dashboard(temp)
             </Button>
+            {/** 
             <Button
               href="/StudentProfile"
               className="nav-item nav-link btn-outline-dark"
             >
               User Profile
             </Button>
+            */}
           </div>
 
           <Searchbar />
