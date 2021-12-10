@@ -207,27 +207,7 @@ function Tutor() {
                                 </div>
                             </div>
                         </div>
-                        <div className="tab-pane fade" id="sent" aria-labelledby="sent-tab" role="tabpanel">
-                            <div className="row p-3 text-dark">
-                                <div className="col-md-6">
-                                    <h3 className="font-light">Lets check profile</h3>
-                                    <h4 className="font-light">you can use it with the small code</h4>
-                                </div>
-                                <div className="col-md-6 text-right">
-                                    <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim
-                                        justo, rhoncus ut, imperdiet a.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="tab-pane fade" id="spam" aria-labelledby="spam-tab" role="tabpanel">
-                            <div className="row p-3 text-dark">
-                                <div className="col-md-6">
-                                    <h3 className="font-light">Come on you have a lot message</h3>
-                                    <h4 className="font-light">you can use it with the small code</h4>
-                                </div>
 
-                            </div>
-                        </div>
 
                     </div>
                 </div>
