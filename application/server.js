@@ -61,57 +61,6 @@ app.get("/onSubmit", function (req, res) {
   });
 });
 
-//Creating a post route for the Registration
-app.post("/register", (req, res) => {
-  console.log("Got body: ", req.body);
-  const data = req.body;
-  var sql;
-  const saltRounds = 10;
-
-  bcrypt.hash(data.password, saltRounds, (err, hash) => {
-    sql = `INSERT INTO user (firstName, lastName, email, password) VALUES ('${data.firstName}', '${data.lastName}', '${data.email}', '${hash}')`;
-    connection.query(sql, (error, results, fields) => {
-      if (error) console.log("Error in Insert into User /register");
-      console.log(results);
-    });
-  });
-
-  res.json({
-    status: "sucess",
-  });
-});
-
-//Creating a post route for the login verification -- Post is used to ensure security so that the login data is secure
-app.post("/login", (req, res) => {
-  console.log("Body for Login is: ", req.body);
-  const data = req.body;
-
-  sql = `SELECT password FROM user WHERE email = '${data.email}'`;
-  connection.query(sql, (error, results, fields) => {
-    if (error) console.log("Error in Select query /login");
-    console.log(results);
-
-    if (results.length < 1) {
-      res.json({
-        status: "User does not exist",
-      });
-    } else {
-      bcrypt.compare(data.password, results[0].password, (err, result) => {
-        console.log(result);
-        if (result == true) {
-          res.json({
-            status: "User has been Authenticated!",
-          });
-        } else {
-          res.json({
-            status: "User Does Not Exist! Password or Username does not exist!",
-          });
-        }
-      });
-    }
-  });
-});
-
 //Creating a Listening Port
 app.listen(port, () => {
   console.log("Listening on Port 3001");
