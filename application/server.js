@@ -93,7 +93,7 @@ app.post("/login", (req, res) => {
 
   sql = `SELECT password FROM user WHERE email = '${data.email}'`;
   connection.query(sql, (error, results, fields) => {
-    if (error) console.log("Error in Select query /login");
+    if (error) console.log("Error in Select query -- route: /login");
     console.log(results);
 
     if (results.length < 1) {
