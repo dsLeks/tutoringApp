@@ -1,63 +1,113 @@
-import React from 'react';
-import "./navbar.css"
-import { NavLink } from 'react-router-dom';
+import React, { useContext } from "react";
+import "./navbar.css";
+import { NavLink } from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import {Nav, Navbar, NavDropdown} from "react-bootstrap";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 // import 'bootstrap/dist/css/bootstrap.css';
-import Picture from './pictures/logo.png'
+import Picture from "./pictures/logo.png";
 // import 'bootstrap/dist/js/bootstrap.bundle';
 // import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 // import 'bootstrap/dist/js/bootstrap.js';
 // import 'jquery/dist/jquery.min';
-import Button from 'react-bootstrap/Button';
-import $ from 'jquery';
-import Searchbar from './SearchBar';
+import Button from "react-bootstrap/Button";
+import $ from "jquery";
+import Searchbar from "./SearchBar";
+import { AppContext } from "../AppContext";
 
-class mynavbar extends React.Component{
-   
-    render() {
-        return (
+const Mynavbar = () => {
+  const loggedInUser = useContext(AppContext);
+  console.log(loggedInUser.loggedInUser);
 
-            <nav className="navbar navbar-expand-lg navbar-dark main-nav" id="thenavbar">
-                <div className="container-fluid">
-                    <a className="navbar-brand" href="/">
-                        <img src={Picture} width="80" height="55" alt="" />
-                                      </a>
+  return (
+    <nav
+      className="navbar navbar-expand-lg navbar-dark main-nav"
+      id="thenavbar"
+    >
+      <div className="container-fluid">
+        <a className="navbar-brand" href="/">
+          <img src={Picture} width="80" height="55" alt="" />
+        </a>
 
+        <button
+          type="button"
+          className="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+        >
+          <span className="navbar-toggler-icon" />
+        </button>
+        <div
+          className="collapse navbar-collapse justify-content-between"
+          id="navbarCollapse"
+          data-target=".navbar-collapse"
+        >
+          <div className="navbar-nav">
+            <Button
+              href="/about"
+              className="nav-item nav-link btn-outline-dark"
+            >
+              About Us
+            </Button>
+            <Button
+              href="/Apply-Tutor"
+              className="nav-item nav-link btn-outline-dark"
+            >
+              Apply to be a tutor
+            </Button>
+            <Button
+              href="/Tutor-Dashboard"
+              className="nav-item nav-link btn-outline-dark"
+            >
+              Dashboard(temp)
+            </Button>
+            {/** 
+            <Button
+              href="/StudentProfile"
+              className="nav-item nav-link btn-outline-dark"
+            >
+              User Profile
+            </Button>
+            */}
+          </div>
 
+          <Searchbar />
 
-                    <button type="button" className="navbar-toggler" data-bs-toggle="collapse"
-                            data-bs-target="#navbarCollapse">
-                        <span className="navbar-toggler-icon"/>
-                    </button>
-                    <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse" data-target=".navbar-collapse">
-                        <div className="navbar-nav">
-                            <Button href="/about" className="nav-item nav-link btn-outline-dark">About Us</Button>
-                            <Button href="/Apply-Tutor" className="nav-item nav-link btn-outline-dark">Apply to be a tutor</Button>
-                            <Button href="/Tutor-Dashboard" className="nav-item nav-link btn-outline-dark">Dashboard(temp)</Button>
-                            <Button href="/StudentProfile" className="nav-item nav-link btn-outline-dark">User Profile</Button>
-                        </div> 
+          <div className="navbar-nav">
+            {loggedInUser.loggedInUser.firstName === "" ? (
+              <>
+                <Button
+                  href="/Login"
+                  className="nav-item nav-link btn-outline-dark"
+                >
+                  Login
+                </Button>
 
-                        <Searchbar/>
+                <Button
+                  href="/Registration"
+                  className="nav-item nav-link btn-outline-dark"
+                >
+                  Register
+                </Button>
+              </>
+            ) : (
+              <Button
+                href="/Login"
+                className="nav-item nav-link btn-outline-dark"
+              >
+                LogOut
+              </Button>
+            )}
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+};
 
-                        <div className="navbar-nav">
-                            <Button href="/Login" className="nav-item nav-link btn-outline-dark">Login</Button>
-                            <Button href="/Registration" className="nav-item nav-link btn-outline-dark">Register</Button>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
-        );
-    }
-}
-
-$("#tableMenu a").on('click', function(e) {
-    e.preventDefault(); // cancel the link behaviour
-    var selText = $(this).text();
-    $("#tableButton").text(selText);
+$("#tableMenu a").on("click", function (e) {
+  e.preventDefault(); // cancel the link behaviour
+  var selText = $(this).text();
+  $("#tableButton").text(selText);
 });
 
-export default mynavbar;
-
-
+export default Mynavbar;

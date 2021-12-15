@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 // import "bootstrap/dist/js/bootstrap.bundle";
 // import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -9,11 +9,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import "./Registration.css";
+import axios from "axios";
 
 const phonevalid =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-
-
 
 /*function validateEmail(email) {
   return /^\"?[\w-_\.]*\"?@mail\.sfsu$/.test(email);
@@ -52,7 +51,7 @@ const schema = yup.object().shape({
   confirmPassword: yup.string().oneOf([yup.ref("password"), null]),
 });
 
-function Registration() {
+function Registration(props) {
   const {
     register,
     handleSubmit,
@@ -61,8 +60,14 @@ function Registration() {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log({ data });
+    const res = await axios.post(
+      `http://localhost:3001/registeration?email=${data.email}&&password=${data.password}&&firstName=${data.firstName}&&lastName=${data.lastName}&&phoneNo=${data.phoneNo}`
+    );
+    console.log(res);
+    props.history.push("/Login");
+    //props.history.push("/StudentProfile");
   };
 
   return (
@@ -83,7 +88,7 @@ function Registration() {
                     class="form-control"
                     name="firstName"
                     placeholder="First Name"
-                    {...register("firstName", { required: true, })}
+                    {...register("firstName", { required: true })}
                   ></input>
                   <p>
                     {/*errors.firstName?.message*/}

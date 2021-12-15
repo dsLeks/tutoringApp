@@ -8,6 +8,15 @@
     outline-color: black;
 }
 
+.profile-button1{
+    background-color: white !important;
+    color: black !important;    
+}
+
+.profile-button1:hover {
+    outline-style: solid;
+    outline-color: black;
+}
 
 .add-experience:hover {
     background: red;
