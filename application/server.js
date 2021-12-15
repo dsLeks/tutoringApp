@@ -5,8 +5,6 @@ const port = 3001;
 const app = express();
 require("dotenv").config();
 const url = require("url");
-const cors = require("cors");
-const bcrypt = require("bcrypt");
 
 app.use(express.static("public")); //Serving express files
 
@@ -15,9 +13,6 @@ app.use(express.static("public")); //Serving express files
 //app.get('/*', function (req, res) {
 //  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 //});
-
-app.use(express.json());
-app.use(cors());
 
 //Creating a Connection
 var connection = mysql.createConnection({
@@ -36,7 +31,7 @@ connection.connect(function (error) {
   console.log("MySql is Connected");
 });
 
-//creating a get route
+//creating a get route for the Search Query -- Needs fixing.
 app.get("/onSubmit", function (req, res) {
   const queryObject = url.parse(req.url, true).query; //Getting Parameters
   console.log(queryObject); //Console Logging the Parameters
