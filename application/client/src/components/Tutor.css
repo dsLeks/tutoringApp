@@ -1,17 +1,10 @@
-#messageStudent {
+body{
+    background: #edf1f5;
     margin-top:20px;
-    height: 250px;
 }
 
-#navDropDownTutor{
-    background: lightgreen;
+
+a {
+    text-decoration-line: none !important;
 }
 
-.div-inline {
-    display:inline-block;
-}
-
-option {
-    color:black !important;
-    background-color:white !important;
-}

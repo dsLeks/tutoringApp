@@ -5,6 +5,7 @@ const port = 3001;
 const app = express();
 require("dotenv").config();
 const url = require("url");
+<<<<<<< HEAD
 const bcrypt = require('bcrypt');
 const multer = require('multer');
 const redis = require('redis')
@@ -52,12 +53,17 @@ const storage = multer.diskStorage({
                                 console.log(file.originalname + ' is starting...'); //This doesn't really work -- don't really need it 
                             } })
 
+=======
+>>>>>>> FEdevelop
 
 
 
 
+<<<<<<< HEAD
 app.use(express.json());
 
+=======
+>>>>>>> FEdevelop
 //Creating a Connection
 var connection = mysql.createConnection({
   host: process.env.DATABASE_HOST,
@@ -75,7 +81,11 @@ connection.connect(function (error) {
   console.log("MySql is Connected");
 });
 
+<<<<<<< HEAD
 //creating a get route for the Search Query -- Needs fixing -- Mention number of rows found i.e. total found! 
+=======
+//creating a get route for the Search Query -- Needs fixing.
+>>>>>>> FEdevelop
 app.get("/onSubmit", function (req, res) {
   const queryObject = url.parse(req.url, true).query; //Getting Parameters
   console.log(queryObject); //Console Logging the Parameters

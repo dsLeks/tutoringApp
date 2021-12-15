@@ -8,8 +8,11 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import "./Registration.css";
+import { Registration } from "./Registration";
 import axios from "axios";
 import { AppContext } from "../AppContext";
+import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const schema = yup.object().shape({
   email: yup
@@ -79,7 +82,7 @@ function Login(props) {
                     required
                     type="password"
                     class="form-control"
-                    placeholder="Last Name"
+                    placeholder="Password"
                     {...register("password", { required: true })}
                   ></input>
                   <p>{errors.password?.message}</p>
@@ -90,10 +93,20 @@ function Login(props) {
                   Login{" "}
                 </button>
               </div>
+
+              <div class="mt-3 text-center">
+                <h5>Don't have an account?</h5>
+                <Link to="/Registration">
+                  <button class="btn btn-primary profile-button" type="submit">
+                    Register{" "}
+                  </button>
+                </Link>
+              </div>
+
+              {/** <Link to="/Registration">Don't have an account? Register</Link>*/}
             </div>
           </div>
         </div>
-        <div></div>
       </form>
       <p>{setLoginStatus}</p>
     </div>

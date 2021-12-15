@@ -10,6 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import "./Registration.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const phonevalid =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -160,8 +161,22 @@ function Registration(props) {
                   ></input>
                   <p>{errors.confirmPassword && "Password don't match"}</p>
                 </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="flexCheckDefault"
+                    required
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    By clicking Register, you agree to our Terms and Privacy
+                    Policy.
+                    <Link to="">Terms of Use</Link>
+                  </label>
+                </div>
               </div>
-              <div class="mt-5 text-center">
+              <div class="mt-3 text-center">
                 <button
                   class="btn btn-primary profile-button"
                   type="submit"
@@ -169,6 +184,17 @@ function Registration(props) {
                 >
                   Register
                 </button>
+                <div class="mt-4 text-center">
+                  <h5>Already have an account?</h5>
+                  <Link to="/Login">
+                    <button
+                      class="btn btn-primary profile-button"
+                      type="submit"
+                    >
+                      Login{" "}
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
