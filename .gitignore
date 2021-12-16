@@ -28,3 +28,8 @@ yarn-error.log*
 
 #react production build
 build
+
+#Ignore Redis Files
+dump.rdb
+redis-stable
+redis-stable.tar.gz
