@@ -62,11 +62,22 @@ function Registration(props) {
     resolver: yupResolver(schema),
   });
   const onSubmit = async (data) => {
-    console.log({ data });
-    const res = await axios.post(
-      `http://localhost:3001/registeration?email=${data.email}&&password=${data.password}&&firstName=${data.firstName}&&lastName=${data.lastName}&&phoneNo=${data.phoneNo}`
-    );
-    console.log(res);
+    //console.log({ data });
+    const data1 = {
+      "firstName": data.firstName,
+      "lastName": data.lastName,
+      "email": data.email,
+      "password": data.password
+    }
+    const response = await fetch('/register', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data1)
+    });
+    const json = await response.json();
+    console.log(json); 
     props.history.push("/Login");
     //props.history.push("/StudentProfile");
   };
@@ -110,7 +121,7 @@ function Registration(props) {
                 </div>
               </div>
               <div class="row mt-3">
-                <div class="col-md-12">
+                {/*<div class="col-md-12">
                   <label class="labels">Phone Number</label>
                   <input
                     required
@@ -123,7 +134,7 @@ function Registration(props) {
                   <p>
                     {errors.phoneNo && "Please Enter 10 digit Phone Number"}
                   </p>
-                </div>
+                </div>*/} 
                 <div class="col-md-12">
                   <label class="labels">SFSU E-mail</label>
                   <input

@@ -41,17 +41,31 @@ function Login(props) {
   });
   const onSubmit = async (data) => {
     console.log({ data });
-    const res = await axios.post(
-      `http://localhost:3001/login?email=${data.email}&&password=${data.password}`
-    );
-    console.log(res.data.data[0]);
-    loggedInUser.setLoggedInUser(res.data.data[0]);
-    if (res.data.status != "User does not exist") {
-      setLoginStatus(res.data.message);
-      props.history.push("/StudentProfile");
-    } else {
-      setLoginStatus(res.data[0]);
+
+    const data1 = {
+      "email": data.email,
+      "password": data.password
     }
+
+    const response = await fetch('/login', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data1)
+  });
+
+      const json = await response.json();
+      console.log(json); 
+
+
+    //loggedInUser.setLoggedInUser(res.data.data[0]);
+    //if (res.data.status != "User does not exist") {
+      //setLoginStatus(res.data.message);
+     // props.history.push("/StudentProfile");
+    //} else {
+      //setLoginStatus(res.data[0]);
+    //}
     //props.history.push("/StudentProfile");
   };
 
