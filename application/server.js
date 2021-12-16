@@ -107,22 +107,40 @@ app.get("/onSubmit", function (req, res) {
 
 //get request to see if user is a tutor -- Is not working yet...IN progress
 app.get('/isTutor', (req,res) => {
-  if(req.session.username && req.session.isAuth) {
-      const sql = `SELECT tutorFlag FROM user WHERE email='${req.session.username}'`;
+  const queryObj = url.parse(req.url, true).query;
+  console.log(queryObj.email);
+  const usrEmail = queryObj.email; 
+  console.log(usrEmail); 
+  //console.log("Session Username: ", req.session.username);
+  //console.log("Session isAuth: ", req.session.isAuth); 
+  if(req.session.isAuth) {
+      const sql = `SELECT tutorFlag FROM user WHERE email='${usrEmail}'`;
       connection.query(sql, (error, results, fields) => {
-          console.log(results[0].tutorFlag); 
-          if(results[0].tutorFlag == 1){
+          if(error) console.log("Error in isTutor: ", error);
+          else { 
+            if(results.length < 1) {
               res.json({
+                status: 'User Not Applied To Be Tutor'
+              })
+            } else {
+              if(results[0].tutorFlag == 1) {
+                res.json({
                   isTutor: 1
-              })
-          } else {
-              res.json({
+                })
+              } else {
+                res.json({
                   isTutor: 0
-              })
+                })
+              }
+            }
           }
       })
+  } else {
+    res.json({
+      status: 'User Not Logged In'
+    })
   }
-})
+});  
 
 //Post request handler for register form
 app.post('/register', (req, res) => {
@@ -268,4 +286,4 @@ app.post('/tutorapply', upload.fields([ { name: 'resume' }, { name: 'photo' } ])
 //Creating a Listening Port
 app.listen(port, () => {
   console.log("Listening on Port 3001");
-});
+}); 
