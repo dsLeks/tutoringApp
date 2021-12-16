@@ -1,0 +1,7 @@
+# Ignore Mac system files
+.DS_store
+
+#Ignore Redis Files
+dump.rdb
+redis-stable
+redis-stable.tar.gz
