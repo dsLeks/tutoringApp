@@ -31,5 +31,5 @@ build
 
 #Ignore Redis Files
 dump.rdb
-/edis-stable
+/redis-stable
 redis-stable.tar.gz
