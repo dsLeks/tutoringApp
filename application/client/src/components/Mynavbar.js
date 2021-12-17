@@ -15,8 +15,8 @@ import Searchbar from "./SearchBar";
 import { AppContext } from "../AppContext";
 
 const Mynavbar = () => {
-  const loggedInUser = useContext(AppContext);
-  console.log(loggedInUser.loggedInUser);
+  const { loggedInUser } = useContext(AppContext);
+  console.log(loggedInUser);
 
   return (
     <nav
@@ -46,20 +46,32 @@ const Mynavbar = () => {
               href="/about"
               className="nav-item nav-link btn-outline-dark"
             >
-              About Us
+              About Us {loggedInUser.firstName}
             </Button>
-            <Button
-              href="/Apply-Tutor"
-              className="nav-item nav-link btn-outline-dark"
-            >
-              Apply to be a tutor
+            {loggedInUser.isTutor && loggedInUser.firstName !== "" ? (
+              <>
+                <Button
+                  href="/Tutor-Dashboard"
+                  className="nav-item nav-link btn-outline-dark"
+                >
+                  Dashboard(temp)
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button
+                  href="/Apply-Tutor"
+                  className="nav-item nav-link btn-outline-dark"
+                >
+                  Apply to be a tutor
+                </Button>
+              </>
+            )}
+
+            <Button href="/post" className="nav-item nav-link btn-outline-dark">
+              Post
             </Button>
-            <Button
-              href="/Tutor-Dashboard"
-              className="nav-item nav-link btn-outline-dark"
-            >
-              Dashboard(temp)
-            </Button>
+           
             {/** 
             <Button
               href="/StudentProfile"
@@ -73,7 +85,7 @@ const Mynavbar = () => {
           <Searchbar />
 
           <div className="navbar-nav">
-            {loggedInUser.loggedInUser.firstName === "" ? (
+            {loggedInUser.firstName === "" ? (
               <>
                 <Button
                   href="/Login"
@@ -91,7 +103,7 @@ const Mynavbar = () => {
               </>
             ) : (
               <Button
-                href="/Login"
+                href="#"
                 className="nav-item nav-link btn-outline-dark"
               >
                 LogOut

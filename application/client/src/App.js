@@ -1,21 +1,3 @@
-// import React from "react";
-// import "./App.css";
-// import SFSUText from "./components/SFSUText";
-// import SearchForm from "./components/SearchForm.js"
-// import Footer from "./components/Footer.js"
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <SFSUText/>
-//       <SearchForm/>
-//       <Footer/>
-//     </div>
-//   );
-// }
-
-// export default App;
-
 import React, { useState } from "react";
 
 import {
@@ -28,6 +10,7 @@ import {
   Registration,
   StudentProfile,
 } from "./components";
+
 // importing member pages below
 import Member1 from "./components/members/Member1";
 import Member2 from "./components/members/Member2";
@@ -53,6 +36,7 @@ function App(props) {
     email: "",
     isLoggedIn: false,
   });
+
   return (
     <AppContext.Provider value={{ loggedInUser, setLoggedInUser }}>
       <div className="page-container">
@@ -83,6 +67,7 @@ function App(props) {
               />
               <Route exact path="/about/Alekhya-Gandu" component={Member5} />
               <Route exact path="/about/Mai-Ra" component={Member6} />
+
               <Route exact path="/Tutor-Dashboard" component={Tutor} />
               <Route exact path="/Apply-Tutor" component={ApplyTutor} />
 
