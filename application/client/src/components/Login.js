@@ -27,9 +27,8 @@ const schema = yup.object().shape({
 });
 
 function Login(props) {
-  const loggedInUser = useContext(AppContext);
+  const { loggedInUser, setLoggedInUser } = useContext(AppContext);
 
-  console.log(loggedInUser);
   const [loginStatus, setLoginStatus] = useState("");
   const {
     register,
@@ -43,28 +42,47 @@ function Login(props) {
     console.log({ data });
 
     const data1 = {
-      "email": data.email,
-      "password": data.password
-    }
+      email: data.email,
+      password: data.password,
+    };
 
-    const response = await fetch('/login', {
-      method: 'POST',
+    const response = await fetch("/login", {
+      method: "POST",
       headers: {
-          'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(data1)
-  });
+      body: JSON.stringify(data1),
+    });
 
-      const json = await response.json();
-      console.log(json); 
+    const json = await response.json();
 
+    console.log("login response", json);
+    console.log(json.status);
+    //console.log(response.data.email);
+
+    if (json.status === "User does not exist") {
+      console.log(setLoginStatus(json.data[0]));
+      props.history.push("/Register");
+      //props.history.push("/StudentProfile");
+    } else if (json.status === "Password Incorrect") {
+      setLoginStatus(json.message);
+
+      props.history.push("/Login");
+    } else {
+      console.log("res json", json);
+      setLoggedInUser(json);
+
+      props.history.push("/StudentProfile");
+      setLoginStatus(json.message);
+      //setLoginStatus(json.status);
+    }
 
     //loggedInUser.setLoggedInUser(res.data.data[0]);
     //if (res.data.status != "User does not exist") {
-      //setLoginStatus(res.data.message);
-     // props.history.push("/StudentProfile");
+    //setLoginStatus(res.data.message);
+    // props.history.push("/StudentProfile");
     //} else {
-      //setLoginStatus(res.data[0]);
+    //setLoginStatus(res.data[0]);
     //}
     //props.history.push("/StudentProfile");
   };
@@ -122,7 +140,7 @@ function Login(props) {
           </div>
         </div>
       </form>
-      <p>{setLoginStatus}</p>
+      {/*<p>{setLoginStatus}</p>*/}
     </div>
   );
 }
