@@ -142,46 +142,9 @@ app.get('/isTutor', (req,res) => {
   }
 });  
 
-//Post request handler for register form
-app.post('/register', (req, res) => {
-  //console.log("Got body: ", req.body); 
-  //console.log("Session ID: ", req.session.id); 
-  const data = req.body; 
-  var sql; 
-  var counts; 
-  const saltRounds = 10; //Number of times to implement hash on password 
-
-  sql = `SELECT COUNT(*) AS counts FROM user WHERE email='${data.email}'`;
-  connection.query(sql, async (error, results, fields) => {
-      if(error) console.log("Error in SELECT COUNT in /register");
-      counts = await results[0].counts; 
-      //console.log(counts); Should not console log for security purposes 
-      if(counts > 0) {
-          res.json({
-              status: 'User-Email Already Exists!' //User email is already existsing in the database  
-          })
-      }
-      else {
-          bcrypt.hash(data.password, saltRounds, (err, hash) => {
-              sql = `INSERT INTO user (firstName, lastName, email, password) VALUES ('${data.firstName}', '${data.lastName}', '${data.email}', '${hash}')`;
-              connection.query(sql, (error, results, fields) => {
-                  if(error) console.log("Error in Insert into User /register");              
-                  //console.log(results); Should not console log for security purposes
-              })
-          })
-          req.session.username = req.body.email; 
-          req.session.isAuth = true; //set session authorized
-          //console.log(req.session.username);
-          //console.log(req.session.isAuth); 
-          //console.log(req.session.id); 
-          res.json({
-              status: 'sucess' //Sends back success once registration has been instered in database. 
-          });
-      }
-
-  })
-
-
+app.get('/testSession', (req,res) => {
+  console.log("/testSession Username: ", req.session.username);
+  console.log("/testSession isAuth: ", req.session.isAuth); 
 })
 
 //Creating a post route for the login verification -- Post is used to ensure security so that the login data is secure 
@@ -214,9 +177,9 @@ app.post('/register', (req, res) => {
           })
           req.session.username = req.body.email; 
           req.session.isAuth = true; //set session authorized
-          console.log(req.session.username);
-          console.log(req.session.isAuth); 
-          console.log(req.session.id); 
+          console.log("session username is: ", req.session.username);
+          console.log("Session isAuth is: ", req.session.isAuth); 
+          console.log("Session ID is: ", req.session.id); 
           res.json({
               status: 'sucess' //Sends back success once registration has been instered in database. 
           });
@@ -229,9 +192,7 @@ app.post('/register', (req, res) => {
 
 //Post request handler for login form
 app.post('/login', (req,res) => {
-  console.log("Body for Login is: ", req.body);
   const data = req.body; 
-
   sql = `SELECT password FROM user WHERE email = '${data.email}'`;
   connection.query(sql, (error, results, fields) => {
       if(error) console.log("Error in Select query /login");
@@ -244,17 +205,29 @@ app.post('/login', (req,res) => {
       }
       else {
           bcrypt.compare(data.password, results[0].password, (err,result) => {
-              //console.log(result); Should not console log for security purposes
+              //console.log(result); //Should not console log for security purposes
               if(result == true) {
                   req.session.username = req.body.email; 
                   req.session.isAuth = true; //set session authorized
-                  res.json({
-                      status: 'Authenticated!'
-                  })
+                  const sql1 = `SELECT tutorFlag FROM user WHERE email='${data.email}'`
+                  connection.query(sql1, (error, results1, fields1) => {
+                    //console.log(results1); 
+                    if(results1[0].tutorFlag == 1) {
+                      res.json({
+                        status: 'Authenticated!',
+                        isTutor: true
+                      })
+                    } else {
+                      res.json({
+                        status: 'Authenticated!',
+                        isTutor: false
+                      })
+                    }
+                  }) 
               }
               else {
                   res.json({
-                      status: "User Does Not Exist! Password or Username does not exist!"
+                      status: "Passowrd Incorrect!"
                   })
               }
           })
