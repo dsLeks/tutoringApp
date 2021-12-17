@@ -9,7 +9,7 @@ const bcrypt = require('bcrypt');
 const multer = require('multer');
 const redis = require('redis')
 const session = require('express-session');
-const { runInNewContext } = require('vm');
+
 
 let RedisStore = require('connect-redis')(session)
 let redisClient = redis.createClient() //Create Default Client
@@ -56,7 +56,7 @@ const storage = multer.diskStorage({
 
 
 
-app.use(express.json());
+
 
 //Creating a Connection
 var connection = mysql.createConnection({
@@ -215,10 +215,16 @@ app.post('/login', (req,res) => {
                     if(results1[0].tutorFlag == 1) {
                       res.json({
                         status: 'Authenticated!',
+                        firstName: results1[0].firstName,
+                        lastName: results1[0].lastName,
+                        email: data.email,
                         isTutor: true
                       })
                     } else {
                       res.json({
+                        firstName: results1[0].firstName,
+                        lastName: results1[0].lastName,
+                        email: data.email,
                         status: 'Authenticated!',
                         isTutor: false
                       })
@@ -239,6 +245,9 @@ app.post('/login', (req,res) => {
 //Post request handler for tutor application form 
 app.post('/tutorapply', upload.fields([ { name: 'resume' }, { name: 'photo' } ]), (req,res) => {
 
+  console.log("Files (Photo) is: ", req.files['photo']);
+  console.log("Files (resume) is: ", req.files['resume']); 
+  
   const photoName = req.body.email.split('@')[0] + '.jpg';
   sql = `INSERT INTO tutors (firstName, lastName, email, courseTeaching, major, courseDescription, imageReference, resume) VALUES ('${req.body.firstName}', '${req.body.lastName}', '${req.body.email}', '${req.body.course}', '${req.body.major}', '${req.body.description}', '/public/${photoName}', '${req.files['resume']}')`; 
   connection.query(sql, (error, results, fields) => {
@@ -248,8 +257,7 @@ app.post('/tutorapply', upload.fields([ { name: 'resume' }, { name: 'photo' } ])
   }) 
   //Updating Tutor Flag is done by Admin. 
   //console.log("Fields are: ", req.body);
-  //console.log("Files (Photo) is: ", req.files['photo']);
-  //console.log("Files (resume) is: ", req.files['resume']); 
+
   //res.send("Received the data"); 
 })
 

@@ -55,8 +55,8 @@ function ApplyTutor() {
       }
       */
 
-  const [resume, setResume] = useState("");
-  const [picture, setPicture] = useState("");
+  const [resume, setResume] = useState(null);
+  const [picture, setPicture] = useState(null);
   const {
     register,
     handleSubmit,
@@ -68,31 +68,35 @@ function ApplyTutor() {
 
   const handleResume = (e) => {
     setResume(e.target.files[0]);
+    console.log("handleResume Logged: ",e.target.files[0]);
   };
   const handlePicture = (e) => {
     setPicture(e.target.files[0]);
+    console.log("handlePicture Logged: ", e.target.files[0]); 
   };
   const onSubmit = async (data) => {
     try {
-      const data1 = {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        email: data.email,
-        courseTeaching: data.courseTeaching,
-        major: data.major,
-        courseDescription: data.description,
-        imageReference: data.imageReference,
-        resume: resume,
-        photo: picture,
-      };
-      const response = await fetch("/tutorapply", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data1),
+      const formData = new FormData();
+
+      formData.append("firstName", data.firstName);
+      formData.append("lastName", data.lastName);
+      formData.append("email", data.email);
+      formData.append("major", data.major);
+      formData.append("course", data.course);
+      formData.append("description", data.description);
+      console.log("Resume is: ",data.resume);
+      console.log("Photo is: ", data.picture); 
+
+      formData.append("resume", data.resume);
+      formData.append("photo", data.picture); 
+
+      const response = await fetch('/tutorapply', {
+          method: 'POST',
+          body: formData
       });
-      console.log("response", response);
+
+      const text = await response.text();
+      console.log(text); 
     } catch (error) {
       console.log(error);
     }
@@ -198,30 +202,21 @@ function ApplyTutor() {
 
               <div className="mt-5 text-center">
                 {/* Upload button for profile picture of the tutor */}
-                <input
-                  type="file"
-                  accept="image/*"
-                  style={{ display: "none" }}
-                  id="contained-button-file"
-                  multiple
-                  {...register("picture", { required: true })}
-                />
-                <label htmlFor="contained-button-file">
-                  <Button
-                    variant="contained"
-                    component="span"
-                    class="btn btn-primary profile-button"
-                    className="profile-button"
-                    style={{ textTransform: "none" }}
-                  >
-                    <h6>Upload Profile Picture</h6>
-                  </Button>
+                <label>
+                  Upload Photo
+                  <input
+                      name="picture"
+                      type="file"
+                      onChange={(e) => handlePicture(e)}
+                      {...register("picture", { required: true })}
+                  />
                 </label>
               </div>
 
               <div className="mt-5 text-center">
                 {/* Upload button for credentials of the tutor */}
                 <input
+                  name="resume"
                   type="file"
                   style={{ display: "none" }}
                   id="contained-button-file1"
