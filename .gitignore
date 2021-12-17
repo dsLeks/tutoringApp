@@ -30,6 +30,6 @@ yarn-error.log*
 build
 
 #Ignore redis-server
-/redis-stable
+redis-stable
 dump.rdb*
 redis-stable.tar.gz*
