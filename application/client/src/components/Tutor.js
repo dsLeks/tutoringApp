@@ -5,51 +5,46 @@ Purpose: allows tutor to view messages form students
 */
 
 import "./Tutor.css";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { AppContext } from "../AppContext";
 
 function Tutor() {
   const loggedInUser = useContext(AppContext);
 
-  const allmessages = [
-    {
-      message_id: 1,
-      date: "May 13",
-      name: "Bob Shimurda",
-      message:
-        "but also the leap into electronic typesetting, remaining essentially unchanged. It was",
-      status: false,
-    },
-    {
-      message_id: 2,
-      date: "Sep 12",
-      name: "Test 1",
-      message: "to electronic typesetting, rem",
-      status: false,
-    },
-    {
-      message_id: 3,
-      date: "Cct 12",
-      name: "John Doe",
-      message: "this is another message to electronic typesetting, rem",
-      status: false,
-    },
-  ];
-  const [messages, setMessages] = useState(allmessages);
+  const allmessages = []; 
 
-  function reorderMessages(id) {
-    let sms = messages.map((message) => {
-      if (message.message_id == id) {
-        message.status = !message.status;
+  const [messages, setMessages] = useState([]);
+  const [listMessages, setlistMessages] = useState([]); 
+  useEffect(async () => {
+    console.log("LoggedInUser: ", loggedInUser); 
+    const email = loggedInUser.loggedInUser.email; 
+    const response = await fetch('/isTutor', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
       }
-      return message;
-    });
-    sms = messages.sort((a, b) => {
-      return a.status - b.status;
-    });
-    console.log(sms);
-    setMessages(sms);
-  }
+    })
+
+    const json = await response.json(); 
+    const tutorId = json.tutorId; 
+
+
+    const response2 = await fetch(`/getmessages?param1=${tutorId}`, {
+      method: 'GET',
+      headers: {
+        "Content-type": 'application/json'
+      }
+    })
+
+    const json1 = await response2.json();
+    for(var i = 0; i < json1.length; i++) {
+      allmessages.push(json1[i].messageDescription);
+    }
+
+    setMessages(allmessages); 
+    console.log(messages);  
+
+  }, []);
 
   return (
     <div className="container">
@@ -78,69 +73,9 @@ function Tutor() {
                         Inbox
                       </h3>
                     </div>
-                    <div className="col-sm-12 col-md-6">
-                      <ul className="list-inline dl mb-0 float-left float-md-right">
-                        <li className="list-inline-item text-info mr-3"></li>
-                      </ul>
-                    </div>
-                  </div>
-
                   <div className="table-responsive">
                     <table className="table email-table no-wrap table-hover v-middle mb-0 font-14">
-                      <tbody>
-                        {messages.map(
-                          ({ name, message, date, status, message_id }) => {
-                            return (
-                              <tr className="border-top">
-                                <td className="pl-3">
-                                  <div className="custom-control custom-checkbox">
-                                    <input
-                                      type="checkbox"
-                                      className="custom-control-input"
-                                      id="cst1"
-                                      value={status}
-                                      onChange={() =>
-                                        reorderMessages(message_id)
-                                      }
-                                    />
-                                    <label
-                                      className="custom-control-label"
-                                      htmlFor="cst1"
-                                    >
-                                      &nbsp;
-                                    </label>
-                                  </div>
-                                </td>
-
-                                <td>
-                                  <i className="fa fa-star text-warning"></i>
-                                </td>
-                                <td>
-                                  <span className="mb-0 text-muted">
-                                    {name}
-                                    {status}
-                                  </span>
-                                </td>
-
-                                <td>
-                                  <a
-                                    className="link"
-                                    href="javascript: void(0)"
-                                  >
-                                    <span className="text-dark">{message}</span>
-                                  </a>
-                                </td>
-
-                                <td>
-                                  <i className="fa fa-paperclip text-muted"></i>
-                                </td>
-
-                                <td className="text-muted">{date}</td>
-                              </tr>
-                            );
-                          }
-                        )}
-                      </tbody>
+                        {messages.map((mess) => <li>{mess}</li>)}
                     </table>
                   </div>
                 </div>
@@ -149,6 +84,7 @@ function Tutor() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

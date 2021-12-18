@@ -80,7 +80,7 @@ export default function SearchBar() {
         >
           <option selected>Category</option>
           <option value="1">Tutors</option>
-          <option value="2">Courses</option>
+          <option value="2">Major</option>
         </select>
 
         <div className="input-group" id="thesearch">

@@ -100,32 +100,6 @@ app.get("/onSubmit", function (req, res) {
 });
 
 //get request to see if user is a tutor -- Is not working yet...IN progress
-app.get("/isTutor", (req, res) => {
-  if (req.session.isAuth && req.session.username) {
-    const email = req.session.username;
-    const sql = `SELECT tutorFlag FROM user WHERE email='${email}'`;
-    connection.query(sql, (error, results, fields) => {
-      if (error) console.log("Error in isTutor Query: ", error);
-      else {
-        if (results.length < 1) {
-          res.json({
-            isTutor: false,
-          });
-        } else {
-          if (results[0].tutorFlag == 1) {
-            res.json({
-              isTutor: true,
-            });
-          } else {
-            res.json({
-              isTutor: false,
-            });
-          }
-        }
-      }
-    });
-  }
-});
 
 app.get("/isLoggedIn", (req, res) => {
   console.log("/testSession Username: ", req.session.username);
@@ -153,6 +127,31 @@ app.get("/getPosts", (req, res) => {
     res.json({ posts });
   });
 });
+
+app.get("/getmessages", (req,res) => {
+  const queryObject = url.parse(req.url, true).query; //Getting Parameters
+  //console.log(queryObject); //Console Logging the Parameters
+  const tutorId = queryObject.param1;
+  console.log("TutorId: ", tutorId); 
+  const sql = `SELECT messageDescription FROM messages WHERE tutorID='${tutorId}'`
+  connection.query(sql, (error, results, fields) => {
+    console.log(results); 
+    res.json(results);  
+  })
+})
+
+app.get("/isTutor", (req, res) => {
+  if (req.session.isAuth && req.session.username) {
+    const email = req.session.username;
+    const sql = `SELECT tutor_id FROM tutors WHERE email='${email}'`;
+    connection.query(sql, (error, results, fields) => {
+      if (error) console.log("Error in isTutor Query: ", error);
+      console.log(results[0].tutor_id); 
+      res.json({tutorId: results[0].tutor_id}); 
+      })
+    };
+  });
+
 
 //Creating a post route for the login verification -- Post is used to ensure security so that the login data is secure
 //Post request handler for register form
@@ -282,7 +281,7 @@ app.post("/messages", (req, res) => {
   console.log("Message is:", req.body.message);
   console.log("TutorId is:", req.body.tutorId);
 
-  const sql = `INSERT INTO messages (tutorID, messageDescription) VALUES('${req.body.tutorID}', '${req.body.message}')`;
+  const sql = `INSERT INTO messages (tutorID, messageDescription) VALUES('${req.body.tutorId}', '${req.body.message}')`;
   connection.query(sql, (error, results, fields) => {
     if (error) console.log("Error in the Insert Query --/messages");
     console.log(results);

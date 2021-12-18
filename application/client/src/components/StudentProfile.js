@@ -20,14 +20,14 @@ function StudentProfile() {
       message: message,
       tutorId: tutorId,
     };
-    console.log({ data });
+    console.log(data);
 
     const response = await fetch("/messages", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(data)
     });
 
     const json = await response.json();

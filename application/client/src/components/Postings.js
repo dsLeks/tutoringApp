@@ -45,9 +45,10 @@ class Postings extends React.Component {
       Object.values(this.state.loggedInUser).length > 0 &&
       this.state.loggedInUser.status === "Authenticated!"
     ) {
-      console.log(this.state.body);
+      //console.log(this.state.body);
       this.state.post.push(this.state.body);
-      const data = { description: this.state.body };
+      const data = { "description": this.state.body };
+      console.log("The submitted Post is: ", data); 
 
       const response = await fetch("/userPosts", {
         method: "POST",
