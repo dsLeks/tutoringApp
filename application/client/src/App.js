@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ReactGa from "react-ga"; 
 
 import {
   Home,
@@ -32,6 +33,11 @@ import MyHeader from "./components/MyHeader";
 import "./App.css";
 
 function App(props) {
+  // initialize tracking for google analytics (done by Justin)
+  ReactGa.initialize('UA-215630964-1');
+  // track page views on the app
+  ReactGa.pageview(window.location.pathname + window.location.search);
+
   const [loggedInUser, setLoggedInUser] = useState({
     firstName: "",
     lastName: "",
