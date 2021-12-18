@@ -107,44 +107,44 @@ app.get("/onSubmit", function (req, res) {
 
 //get request to see if user is a tutor -- Is not working yet...IN progress
 app.get('/isTutor', (req,res) => {
-  const queryObj = url.parse(req.url, true).query;
-  console.log(queryObj.email);
-  const usrEmail = queryObj.email; 
-  console.log(usrEmail); 
-  //console.log("Session Username: ", req.session.username);
-  //console.log("Session isAuth: ", req.session.isAuth); 
-  if(req.session.isAuth) {
-      const sql = `SELECT tutorFlag FROM user WHERE email='${usrEmail}'`;
-      connection.query(sql, (error, results, fields) => {
-          if(error) console.log("Error in isTutor: ", error);
-          else { 
-            if(results.length < 1) {
-              res.json({
-                status: 'User Not Applied To Be Tutor'
-              })
-            } else {
-              if(results[0].tutorFlag == 1) {
-                res.json({
-                  isTutor: 1
-                })
-              } else {
-                res.json({
-                  isTutor: 0
-                })
-              }
-            }
+  if(req.session.isAuth && req.session.username) {
+    const email = req.session.username; 
+    const sql = `SELECT tutorFlag FROM user WHERE email='${email}'`;
+    connection.query(sql, (error, results, fields) => {
+      if(error) console.log("Error in isTutor Query: ", error);
+      else {
+        if(results.length < 1) {
+          res.json({
+            isTutor: false 
+          })
+        } else {
+          if(results[0].tutorFlag == 1){
+            res.json({
+              isTutor: true
+            })
+          } else {
+            res.json({
+              isTutor: false
+            })
           }
-      })
-  } else {
-    res.json({
-      status: 'User Not Logged In'
+        }
+      }
     })
   }
 });  
 
-app.get('/testSession', (req,res) => {
+app.get('/isLoggedIn', (req,res) => {
   console.log("/testSession Username: ", req.session.username);
   console.log("/testSession isAuth: ", req.session.isAuth); 
+  if(req.session.isAuth && req.session.username) {
+    res.json({
+      isLoggedIn: true
+    })
+  } else {
+    res.json({
+      isLoggedIn: false
+    })
+  }
 })
 
 app.get('/getPosts', (req,res) => {
@@ -272,6 +272,17 @@ app.post('/tutorapply', upload.fields([ { name: 'resume' }, { name: 'photo' } ])
   //console.log("Fields are: ", req.body);
 
   //res.send("Received the data"); 
+})
+
+app.post('/userPosts', (req,res) => {
+  const sql = `INSERT INTO posting (postDescription) VALUES '${req.body.description}'`;
+  connection.query(sql, (error, results, fields) => {
+    if(error) console.log("Error in the Insert Query --/userPosts")
+    console.log(results);
+    res.json({
+      status: 'OK'
+    })
+  })
 })
 
 
