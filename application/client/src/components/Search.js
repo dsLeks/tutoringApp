@@ -42,7 +42,6 @@ export default function Search() {
                       <li>TutorID: {searchResponse.tutor_id}</li>
                       <li>First Name: {searchResponse.firstName}</li>
                       <li>Last Name: {searchResponse.lastName}</li>
-                      <li>Email: {searchResponse.email}</li>
                       <li>Course: {searchResponse.courseTeaching}</li>
                       <li>
                         Course Description: {searchResponse.courseDescription}
@@ -68,10 +67,9 @@ export default function Search() {
                         "Search Response length is: " +
                           Object.keys(searchResponse).length
                       )}
-                      <li>TutorID: {searchResponse.tutorID}</li>
+                      <li>TutorID: {searchResponse.tutor_id}</li>
                       <li>First Name: {searchResponse.firstName}</li>
                       <li>Last Name: {searchResponse.lastName}</li>
-                      <li>Email: {searchResponse.email}</li>
                       <li>Course: {searchResponse.courseTeaching}</li>
                     </ul>
                   </div>
@@ -94,9 +92,7 @@ export default function Search() {
                         "Search Response length is: " +
                           Object.keys(searchResponse).length
                       )}
-                      <li>CourseID: {searchResponse.courseID}</li>
                       <li>TutorID: {searchResponse.tutor_id}</li>
-                      <li>Email: {searchResponse.email}</li>
                       <li>Tutor Name: {searchResponse.firstName}</li>
                       <li>Course Name: {searchResponse.lastName}</li>
                       <li>

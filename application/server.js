@@ -251,7 +251,7 @@ app.post(
     console.log("Files (resume) is: ", req.files["resume"]);
 
     const photoName = req.body.email.split("@")[0] + ".jpg";
-    sql = `INSERT INTO tutors (firstName, lastName, email, courseTeaching, major, courseDescription, imageReference, resume) VALUES ('${req.body.firstName}', '${req.body.lastName}', '${req.body.email}', '${req.body.course}', '${req.body.major}', '${req.body.description}', '/public/${photoName}', '${req.files["resume"]}')`;
+    sql = `INSERT INTO tutors (firstName, lastName, email, courseTeaching, major, courseDescription, imageReference, resume) VALUES ('${req.body.firstName}', '${req.body.lastName}', '${req.body.email}', '${req.body.course}', '${req.body.major}', '${req.body.description}', '${photoName}', '${req.files["resume"]}')`;
     connection.query(sql, (error, results, fields) => {
       if (error) console.log("Error in Insert Query --/tutorapply route");
       console.log(results);
