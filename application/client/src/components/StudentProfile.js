@@ -63,8 +63,7 @@ function StudentProfile() {
               src={Student}
             ></img>
             <span className="font-weight-bold ">
-              Name: {loggedInUser.firstName || ""}
-              {loggedInUser.lastName || ""}
+              Name: {loggedInUser.firstName || ""} {loggedInUser.lastName || ""}
             </span>
             <span className="text-lowercase text-black-50">
               {loggedInUser.email || ""}:

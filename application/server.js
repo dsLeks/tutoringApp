@@ -211,7 +211,7 @@ app.post("/login", (req, res) => {
         if (result == true) {
           req.session.username = req.body.email;
           req.session.isAuth = true; //set session authorized
-          const sql1 = `SELECT tutorFlag FROM user WHERE email='${data.email}'`;
+          const sql1 = `SELECT tutorFlag, firstName, lastName FROM user WHERE email='${data.email}'`;
           connection.query(sql1, (error, results1, fields1) => {
             //console.log(results1);
             if (results1[0].tutorFlag == 1) {
