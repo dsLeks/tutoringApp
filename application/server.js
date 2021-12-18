@@ -87,15 +87,13 @@ app.get("/onSubmit", function (req, res) {
   var sql;
 
   if (search.length == 0) {
-    sql = `SELECT * FROM tutor INNER JOIN courses ON tutor.tutorID=courses.tutor`;
-  } else if (category == 1) {
-    sql = `SELECT * FROM tutor WHERE firstName LIKE "${search}%" OR lastName LIKE "${search}%" OR courseTeaching LIKE "${search}%"`;
-  } else if (category == 2) {
-    sql = `SELECT * FROM courses WHERE courseName LIKE "${search}%"`;
+    sql = `SELECT * FROM tutors`;
+  } else if (category == 1) { //tutors
+    sql = `SELECT * FROM tutors WHERE firstName LIKE "${search}%" OR lastName LIKE "${search}%" OR courseTeaching LIKE "${search}%" OR courseDescription LIKE "${search}"`;
+  } else if (category == 2) { //majors
+    sql = `SELECT * FROM tutors WHERE major LIKE "${search}%"`;
   } else {
-    sql = `SELECT tutor.tutorID, tutor.email, tutor.firstName, tutor.lastName, tutor.courseTeaching, tutor.imageReference, courses.courseID, courses.courseDescription 
-        FROM tutor INNER JOIN courses ON tutor.tutorID=courses.tutor
-        WHERE firstName LIKE '${search}%' OR lastName LIKE '${search}%' OR courseTeaching LIKE '${search}%' OR courseDescription LIKE '${search}%';  `;
+    sql = `SELECT * FROM tutors`;
   }
 
   connection.query(sql, (error, results, fields) => {
