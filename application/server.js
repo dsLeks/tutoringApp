@@ -267,7 +267,24 @@ app.post(
 app.post("/userPosts", (req, res) => {
   const sql = `INSERT INTO posting (postDescription) VALUES ('${req.body.description}')`;
   connection.query(sql, (error, results, fields) => {
-    if (error) console.log("Error in the Insert Query --/userPosts");
+    if (error) {
+      console.log("Error in the Insert Query --/userPosts");
+      console.log(error);
+    }
+    console.log(results);
+    res.json({
+      status: "OK",
+    });
+  });
+});
+
+app.post("/messages", (req, res) => {
+  console.log("Message is:", req.body.message);
+  console.log("TutorId is:", req.body.tutorId);
+
+  const sql = `INSERT INTO messages (tutorID, messageDescription) VALUES('${req.body.tutorID}', '${req.body.message}')`;
+  connection.query(sql, (error, results, fields) => {
+    if (error) console.log("Error in the Insert Query --/messages");
     console.log(results);
     res.json({
       status: "OK",

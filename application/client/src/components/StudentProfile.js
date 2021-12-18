@@ -16,37 +16,27 @@ function StudentProfile() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let data = {
+    const data = {
       message: message,
-      subject: subject,
       tutorId: tutorId,
     };
     console.log({ data });
 
-    // const data1 = {
-    //   tutorId: data.tutorId,
-    //   subject: data.subject,
-    //   message: data.message,
-    // };
+    const response = await fetch("/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
-    try {
-      const response = await fetch("/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+    const json = await response.json();
+    console.log("response json ", json);
+    setMessage("");
+    setSubject("");
+    setTutorId("");
 
-      const json = await response.json();
-      setMessage("");
-      setSubject("");
-      setTutorId("");
-
-      console.log("login response", json);
-    } catch (error) {
-      console.log("error", error);
-    }
+    console.log("login response", json);
   };
 
   return (
@@ -84,12 +74,12 @@ function StudentProfile() {
                   type="text"
                   class="form-control"
                   placeholder="Enter Tutor-ID"
-                  value={subject}
+                  value={tutorId}
                   onChange={(e) => setTutorId(e.target.value)}
                 ></textarea>
               </div>
             </div>
-            <div class="row mt-5">
+            {/* <div class="row mt-5">
               <h4 class="text-right">Subject-Line</h4>
               <div class="col-md-10">
                 <textarea
@@ -101,7 +91,7 @@ function StudentProfile() {
                   onChange={(e) => setSubject(e.target.value)}
                 ></textarea>
               </div>
-            </div>
+            </div> */}
             <div class="row mt-5">
               <h4 class="text-right">Message:</h4>
               <div class="col-md-10">
