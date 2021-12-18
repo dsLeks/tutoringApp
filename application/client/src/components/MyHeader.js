@@ -10,7 +10,7 @@ class myHeader extends React.Component{
         return (
             <div className="container-fluid-nav text-center">
                 <Navbar className="background-color"  variant="light">
-                        <h1 className="theHeader" >SFSU Software Engineering Project CSC648-848, Fall 2021 </h1>
+                        <h1 className="theHeader" >SFSU Software Engineering Project CSC648-848, Fall 2021 For Demonstration Only </h1>
                 </Navbar>
             </div>
 

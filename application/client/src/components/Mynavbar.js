@@ -82,8 +82,8 @@ const Mynavbar = () => {
               </>
             )}
 
-            <Button href="/post" className="nav-item nav-link btn-outline-dark">
-              Post
+            <Button href="/Postings" className="nav-item nav-link btn-outline-dark">
+              Posts
             </Button>
 
             {/** 
