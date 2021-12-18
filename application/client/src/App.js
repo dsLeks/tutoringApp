@@ -26,7 +26,7 @@ import { AppContext } from "./AppContext";
 //for search
 import Search from "./components/Search";
 
-import { Route, Link, Switch, BrowserRouter } from "react-router-dom";
+import { Route, Link, Switch, BrowserRouter, Redirect } from "react-router-dom";
 import Mynavbar from "./components/Mynavbar";
 import MyHeader from "./components/MyHeader";
 
@@ -44,6 +44,18 @@ function App(props) {
     email: "",
     isLoggedIn: false,
   });
+
+  React.useEffect(() => {
+    let authUser = localStorage.getItem("whpf_user");
+    if (authUser && Object.keys(authUser).length) {
+      setLoggedInUser(JSON.parse(authUser));
+    } else {
+      localStorage.removeItem("whpf_user");
+      setLoggedInUser({});
+    }
+  }, []);
+
+  console.log(loggedInUser, "logINuse");
 
   return (
     <AppContext.Provider value={{ loggedInUser, setLoggedInUser }}>
@@ -75,6 +87,17 @@ function App(props) {
               />
               <Route exact path="/about/Alekhya-Gandu" component={Member5} />
               <Route exact path="/about/Mai-Ra" component={Member6} />
+
+              {
+                // as like when  conditon is tutor  it get from backend else Home;
+                // or create a dashbord index file  and create  two routes of studnt profile and student logout;
+                //     1 -- > if usre is Registerd  and  tutor;
+                //       2-- only Register 3   Routes  //about us, apply to be a tutor and search , logout
+                //   3 --for  Regurlar    Routes home path  = "/" about, apply to be a tutor-redirect login,
+                // <Route exact path="/">
+                //{loggedInUser.Tutor?<Redirect to ="/Tutor-Dashboard" /> :<Home/>}
+                // </Route>
+              }
 
               <Route exact path="/Tutor-Dashboard" component={Tutor} />
               <Route exact path="/Apply-Tutor" component={ApplyTutor} />
