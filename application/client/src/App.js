@@ -11,6 +11,8 @@ import {
   StudentProfile,
 } from "./components";
 
+import Postings from "./components/Postings.js"
+
 // importing member pages below
 import Member1 from "./components/members/Member1";
 import Member2 from "./components/members/Member2";
@@ -74,6 +76,7 @@ function App(props) {
               <Route exact path="/StudentProfile" component={StudentProfile} />
               <Route exact path="/Registration" component={Registration} />
               <Route exact path="/Login" component={Login} />
+              <Route exact path="/Postings" component={Postings} />
             </Switch>
           </div>
 

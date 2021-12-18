@@ -147,6 +147,19 @@ app.get('/testSession', (req,res) => {
   console.log("/testSession isAuth: ", req.session.isAuth); 
 })
 
+app.get('/getPosts', (req,res) => {
+  const sql = `SELECT postDescription FROM posting`; 
+  connection.query(sql, (error, results, fields) => {
+    console.log(results);
+    const posts = [];
+    for(var i = 0; i < results.length; i++){
+      posts.push(results[i].postDescription); 
+    }
+    console.log("Posts are: ", posts);
+    res.json({posts}); 
+  })
+})
+
 //Creating a post route for the login verification -- Post is used to ensure security so that the login data is secure 
 //Post request handler for register form
 app.post('/register', (req, res) => {
