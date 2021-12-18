@@ -15,13 +15,13 @@ function StudentProfile() {
   const [tutorId, setTutorId] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    if(loggedInUser.status == 'Authenticated!') {
+      e.preventDefault();
     const data = {
       message: message,
       tutorId: tutorId,
     };
     console.log(data);
-
     const response = await fetch("/messages", {
       method: "POST",
       headers: {
@@ -37,6 +37,10 @@ function StudentProfile() {
     setTutorId("");
 
     console.log("login response", json);
+    } else {
+      window.alert("Must be Logged In!"); 
+    }
+    
   };
 
   return (
