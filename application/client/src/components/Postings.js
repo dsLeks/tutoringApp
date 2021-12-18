@@ -1,5 +1,6 @@
 import React from 'react';
-
+import './Posting.css';
+import {Table} from 'fixed-data-table';
 
 class Postings extends React.Component {
   constructor(props) {
@@ -22,17 +23,37 @@ class Postings extends React.Component {
       this.setState({
         post: json.posts
       })
-  }
+    }
 
   render(){
+    // function to map the array 
+    const {post} = this.state;
+    // const postArray = post.map((postss => 
+    //   <div class="posting">{postss}</div>))
+    let tableRows = null;
+    if (this.state.post){
+      tableRows = <td>
+        {this.state.post.map((post, index) =>{
+          return (
+            <tr key={index}>
+              {post}
+            </tr>
+          )
+        })}
+      </td>
+    }
+
     return (
       <div>
-        <ol>{this.state.post.map(post => {
-          <li key={post}>{post}</li>
-        })}</ol>
+        <h1> Tutor Posts </h1>
+        <table>
+          <tbody>
+            {tableRows}
+          </tbody>
+        </table>
         <label>
-          Type The post here:
-          <input type="text"></input>
+          Type your post here: <br/>
+          <textarea type="text"></textarea>
         </label>
       </div>
     )

@@ -1,0 +1,30 @@
+table{
+    border-collapse: separate;
+    border-spacing:0 5em;
+}
+
+tr{
+    background-color: rgb(243, 243, 243);
+    outline: 1px solid black;
+    text-align: left;
+    font-size: 18px;
+}
+
+h1{
+    text-align: center;
+}
+
+td{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+textarea{
+    vertical-align: top;
+    width: 60vh;
+    height: 12vh;
+}
+
+label{
+    font-weight: bold;
+}
