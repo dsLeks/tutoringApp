@@ -1,12 +1,12 @@
 import React from 'react';
 import './Posting.css';
-import {Table} from 'fixed-data-table';
 
 class Postings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      post: []
+      post: [],
+      body: ""
     }
   }
 
@@ -24,6 +24,19 @@ class Postings extends React.Component {
         post: json.posts
       })
     }
+
+  handlePostChange = (event) => {
+    this.setState({body: event.target.value})
+  }
+
+  submitPost(event) {
+    console.log(this.state.body)
+    this.state.post.push(this.state.body)
+    this.setState.body = " "
+    event.preventDefault()
+
+  }
+
 
   render(){
     // function to map the array 
@@ -53,7 +66,8 @@ class Postings extends React.Component {
         </table>
         <label>
           Type your post here: <br/>
-          <textarea type="text"></textarea>
+          <textarea type="text" value={this.state.body} onChange={this.handlePostChange}></textarea> <br/>
+          <button type="button" onClick={this.submitPost}>Submit Post</button>
         </label>
       </div>
     )
