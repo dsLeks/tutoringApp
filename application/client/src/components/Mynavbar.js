@@ -80,12 +80,6 @@ const Mynavbar = (props) => {
                 >
                   Apply to be a tutor
                 </Button>
-                <Button
-                  href="/StudentProfile"
-                  className="nav-item nav-link btn-outline-dark"
-                >
-                  Profile
-                </Button>
               </>
             )}
 
