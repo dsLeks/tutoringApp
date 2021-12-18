@@ -57,7 +57,7 @@ const Mynavbar = (props) => {
             >
               About Us
             </Button>
-            {loggedInUser.isTutor || loggedInUser.firstName !== "" ? (
+            {loggedInUser.isTutor && loggedInUser.firstName !== "" ? (
               <>
                 <Button
                   href="/Tutor-Dashboard"
