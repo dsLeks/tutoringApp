@@ -1,33 +1,7 @@
-.profile-button{
-    background-color: white !important;
-    color: black !important;    
-}
-
-.profile-button:hover {
-    outline-style: solid;
-    outline-color: black;
-}
-
-.profile-button1{
-    background-color: white !important;
-    color: black !important;    
-}
-
-.profile-button1:hover {
-    outline-style: solid;
-    outline-color: black;
-}
-
-.add-experience:hover {
-    background: red;
-    color: #fff;
-    cursor: pointer;
-    border: solid 4px #BA68C8
-}
-
-.desc{
-    width: 525px;
-    height: 150px;
-    text-align: left !important;
-    vertical-align: top !important;
+.tutorForm {
+    text-align: center; 
+    display: block; 
+    margin: auto; 
+    width: 50%; 
+    margin-top: 200px;
 }

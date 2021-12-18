@@ -1,38 +1,48 @@
-import "./ApplyTutor.css";
-// import 'bootstrap/dist/css/bootstrap.css';
-// import 'bootstrap/dist/js/bootstrap.bundle';
-// import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-// import 'bootstrap/dist/js/bootstrap.js';
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import Button from "@material-ui/core/Button";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import React from 'react';
+import './ApplyTutor.css';
 
-const schema = yup.object().shape({
-  firstName: yup
-    .string()
-    .max(40, "Maximum Character only 40")
-    .min(1, "Field cannot be Empty")
-    .required("Field cannot be Empty"),
-  lastName: yup
-    .string()
-    .required()
-    .max(40, "Maximum Character only 40")
-    .min(1, "Field cannot be Empty"),
-  email: yup
-    .string()
-    .max(40, "Maximum Character only 40")
-    .matches(/^([a-zA-Z0-9_-]+)(@mail.sfsu.edu)$/, "Email must be SFSU email"),
-  major: yup.string().max(40, "Maximum Character only 40"),
-  course: yup.string().max(40, "Maximum Character only 40"),
-  description: yup.string().max(150, "Maximum Character only 150"),
-  picture: yup.mixed().required("Picture must be uploaded"),
-  resume: yup.mixed().required("Picture must be uploaded"),
-});
+class ApplyTutor extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          firstName: "",
+          lastName: "",
+          email: "",
+          major: "",
+          course: "",
+          description:"",
+          photo: null,
+          resume: null
+        };
+    
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleFileInputChange = this.handleFileInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+      }
+    
+      handleInputChange(event) {
+        event.preventDefault();
+        const target = event.target;
+        this.setState((state) => {
+            return {
+                [target.name]: target.value,
+            }
+        });
+      }
 
-function ApplyTutor() {
-  /* async handleSubmit(event) {
+      handleFileInputChange(event) {
+        event.preventDefault();
+        const target = event.target;
+        const file = target.files[0];
+        console.log("Data File",file); 
+        this.setState((state) => {
+            return {
+                [target.name]: file
+            }
+        });
+      }
+
+      async handleSubmit(event) {
           event.preventDefault(); 
           const formData = new FormData();
 
@@ -53,205 +63,85 @@ function ApplyTutor() {
           const text = await response.text();
           console.log(text); 
       }
-      */
-
-  const [resume, setResume] = useState(null);
-  const [picture, setPicture] = useState(null);
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
-
-  const handleResume = (e) => {
-    setResume(e.target.files[0]);
-    console.log("handleResume Logged: ",e.target.files[0]);
-  };
-  const handlePicture = (e) => {
-    setPicture(e.target.files[0]);
-    console.log("handlePicture Logged: ", e.target.files[0]); 
-  };
-  const onSubmit = async (data) => {
-    try {
-      const formData = new FormData();
-
-      formData.append("firstName", data.firstName);
-      formData.append("lastName", data.lastName);
-      formData.append("email", data.email);
-      formData.append("major", data.major);
-      formData.append("course", data.course);
-      formData.append("description", data.description);
-      console.log("Resume is: ",data.resume);
-      console.log("Photo is: ", data.picture); 
-
-      formData.append("resume", data.resume);
-      formData.append("photo", data.picture); 
-
-      const response = await fetch('/tutorapply', {
-          method: 'POST',
-          body: formData
-      });
-
-      const text = await response.text();
-      console.log(text); 
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  return (
-    <div class="container rounded-5 bg-white mt-5 mb-5">
-      <form className="form" onSubmit={handleSubmit(onSubmit)}>
-        <div class="row">
-          <div class="col-md-3 border-right"></div>
-          <div class="col-md-5 border-right">
-            <div class="">
-              <h3 class="text-center display-5">Apply to be a Tutor</h3>
-              <h6 class="text-center">(All fields required)</h6>
-
-              <div>
-                <div>
-                  <label class="labels">
-                    <h5>First Name</h5>
-                  </label>
-                  <input
-                    required
-                    type="text"
-                    class="form-control"
-                    placeholder="First Name"
-                    {...register("firstName", { required: true })}
-                  ></input>
-                  <p>{errors.firstName?.message}</p>
-                </div>
-                <div>
-                  <label class="labels">
-                    <h5>Last Name</h5>
-                  </label>
-                  <input
-                    required
-                    type="text"
-                    class="form-control"
-                    placeholder="Last Name"
-                    {...register("lastName", { required: true })}
-                  ></input>
-                  <p>{errors.lastName?.message}</p>
-                </div>
-                <div>
-                  <label class="labels">
-                    <h5>SFSU E-mail</h5>
-                  </label>
-                  <input
-                    required
-                    type="text"
-                    class="form-control"
-                    placeholder="yourname@mail.sfsu.edu"
-                    {...register("email", { required: true })}
-                  ></input>
-                  <p>{errors.email?.message}</p>
-                </div>
-              </div>
-              <br />
-
-              {/* Removed address, phone number, major department dropdown menu, 2 optional classes, and date availaibility fields to match those with the table on the back end */}
-              {/* Added text fields for major/course to tutor, added description text field*/}
-              <div class="col-md-12">
-                <label class="labels">
-                  <h5>Major to Tutor</h5>
-                </label>
-                <input
-                  required
-                  type="text"
-                  class="form-control"
-                  placeholder="required (CSC, BIO, MATH, etc.)"
-                  {...register("major", { required: true })}
-                ></input>
-                <p>{errors.major?.message}</p>
-              </div>
-              <div class="col-md-12">
-                <label class="labels">
-                  <h5>Course to Tutor</h5>
-                </label>
-                <input
-                  required
-                  type="text"
-                  class="form-control"
-                  placeholder="required (CSC510, BIO100 MATH325, etc.)"
-                  {...register("course", { required: true })}
-                ></input>
-                <p>{errors.course?.message}</p>
-              </div>
-              <br />
-              <div class="col-md-12">
-                <label class="labels">
-                  <h5>Description</h5>
-                </label>
-                <br />
-                <textarea
-                  required
-                  type="text"
-                  class="form-control"
-                  className="desc"
-                  placeholder="(150 characters or less) Tell us about yourself..."
-                  {...register("description", { required: true })}
-                ></textarea>
-                <p>{errors.description?.message}</p>
-              </div>
-
-              <div className="mt-5 text-center">
-                {/* Upload button for profile picture of the tutor */}
-                <label>
-                  Upload Photo
-                  <input
-                      name="picture"
-                      type="file"
-                      onChange={(e) => handlePicture(e)}
-                      {...register("picture", { required: true })}
-                  />
-                </label>
-              </div>
-
-              <div className="mt-5 text-center">
-                {/* Upload button for credentials of the tutor */}
-                <input
-                  name="resume"
-                  type="file"
-                  style={{ display: "none" }}
-                  id="contained-button-file1"
-                  multiple
-                  onChange={(e) => handleResume(e)}
-                  {...register("resume", { required: true })}
-                />
-                <label htmlFor="contained-button-file1">
-                  <Button
-                    class="btn btn-primary profile-button1"
-                    className="profile-button1"
-                    variant="contained"
-                    component="span"
-                    style={{ textTransform: "none" }}
-                  >
-                    <h6>Upload Resume/Credentials</h6>
-                  </Button>
-                </label>
-              </div>
-
-              <div class="mt-5 text-center">
-                <button
-                  class="btn btn-primary profile-button"
-                  type="submit"
-                  id="submit"
-                >
-                  Apply
-                </button>
-              </div>
+    render(){
+        return (
+            <div className="tutorForm">
+                <form onSubmit={this.handleSubmit}>
+                        <label>
+                            First Name
+                            <input
+                                name="firstName"
+                            type="text"
+                                value={this.state.firstName}
+                                onChange={this.handleInputChange}
+                            />
+                        </label>
+                        <label>
+                            Last Name
+                            <input
+                                name="lastName"
+                                type="text"
+                                value={this.state.lastName}
+                                onChange={this.handleInputChange}
+                            />
+                        </label>
+                        <label>
+                            Email
+                            <input
+                                name="email"
+                                type="text"
+                                value={this.state.email}
+                                onChange={this.handleInputChange}
+                            />
+                        </label>
+                        <label>
+                            Major
+                            <input
+                                name="major"
+                                type="text"
+                                value={this.state.major}
+                                onChange={this.handleInputChange}
+                            />
+                        </label>
+                        <label>
+                            Course
+                            <input
+                                name="course"
+                                type="text"
+                                value={this.state.course}
+                                onChange={this.handleInputChange}
+                            />
+                        </label>
+                        <label>
+                            Description
+                            <input
+                                name="description"
+                                type="text"
+                                value={this.state.description}
+                                onChange={this.handleInputChange}
+                            />
+                        </label>
+                        <label>
+                            Upload Resume
+                            <input
+                                name="resume"
+                                type="file"
+                                onChange={this.handleFileInputChange}
+                            />
+                        </label>
+                        <label>
+                            Upload Photo
+                            <input
+                                name="photo"
+                                type="file"
+                                onChange={this.handleFileInputChange}
+                            />
+                        </label>
+                        <button type="submit">Register</button>
+                    </form> 
             </div>
-          </div>
-        </div>
-      </form>
-    </div>
-  );
+        )
+    }
 }
 
-export default ApplyTutor;
+export default ApplyTutor; 
