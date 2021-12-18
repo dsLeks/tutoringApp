@@ -265,7 +265,7 @@ app.post(
 );
 
 app.post("/userPosts", (req, res) => {
-  const sql = `INSERT INTO posting (postDescription) VALUES '${req.body.description}'`;
+  const sql = `INSERT INTO posting (postDescription) VALUES ('${req.body.description}')`;
   connection.query(sql, (error, results, fields) => {
     if (error) console.log("Error in the Insert Query --/userPosts");
     console.log(results);
