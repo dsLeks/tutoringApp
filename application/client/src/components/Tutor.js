@@ -5,11 +5,51 @@ Purpose: allows tutor to view messages form students
 */
 
 import "./Tutor.css";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AppContext } from "../AppContext";
 
 function Tutor() {
   const loggedInUser = useContext(AppContext);
+
+  const allmessages = [
+    {
+      message_id: 1,
+      date: "May 13",
+      name: "Bob Shimurda",
+      message:
+        "but also the leap into electronic typesetting, remaining essentially unchanged. It was",
+      status: false,
+    },
+    {
+      message_id: 2,
+      date: "Sep 12",
+      name: "Test 1",
+      message: "to electronic typesetting, rem",
+      status: false,
+    },
+    {
+      message_id: 3,
+      date: "Cct 12",
+      name: "John Doe",
+      message: "this is another message to electronic typesetting, rem",
+      status: false,
+    },
+  ];
+  const [messages, setMessages] = useState(allmessages);
+
+  function reorderMessages(id) {
+    let sms = messages.map((message) => {
+      if (message.message_id == id) {
+        message.status = !message.status;
+      }
+      return message;
+    });
+    sms = messages.sort((a, b) => {
+      return a.status - b.status;
+    });
+    console.log(sms);
+    setMessages(sms);
+  }
 
   return (
     <div className="container">
@@ -48,266 +88,58 @@ function Tutor() {
                   <div className="table-responsive">
                     <table className="table email-table no-wrap table-hover v-middle mb-0 font-14">
                       <tbody>
-                        <tr className="border-top">
-                          <td className="pl-3">
-                            <div className="custom-control custom-checkbox">
-                              <input
-                                type="checkbox"
-                                className="custom-control-input"
-                                id="cst1"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="cst1"
-                              >
-                                &nbsp;
-                              </label>
-                            </div>
-                          </td>
+                        {messages.map(
+                          ({ name, message, date, status, message_id }) => {
+                            return (
+                              <tr className="border-top">
+                                <td className="pl-3">
+                                  <div className="custom-control custom-checkbox">
+                                    <input
+                                      type="checkbox"
+                                      className="custom-control-input"
+                                      id="cst1"
+                                      value={status}
+                                      onChange={() =>
+                                        reorderMessages(message_id)
+                                      }
+                                    />
+                                    <label
+                                      className="custom-control-label"
+                                      htmlFor="cst1"
+                                    >
+                                      &nbsp;
+                                    </label>
+                                  </div>
+                                </td>
 
-                          <td>
-                            <i className="fa fa-star text-warning"></i>
-                          </td>
-                          <td>
-                            <span className="mb-0 text-muted">
-                              Bob Shimurda
-                            </span>
-                          </td>
+                                <td>
+                                  <i className="fa fa-star text-warning"></i>
+                                </td>
+                                <td>
+                                  <span className="mb-0 text-muted">
+                                    {name}
+                                    {status}
+                                  </span>
+                                </td>
 
-                          <td>
-                            <a className="link" href="javascript: void(0)">
-                              <span className="text-dark">
-                                but also the leap into electronic typesetting,
-                                remaining essentially unchanged. It was
-                              </span>
-                            </a>
-                          </td>
+                                <td>
+                                  <a
+                                    className="link"
+                                    href="javascript: void(0)"
+                                  >
+                                    <span className="text-dark">{message}</span>
+                                  </a>
+                                </td>
 
-                          <td>
-                            <i className="fa fa-paperclip text-muted"></i>
-                          </td>
+                                <td>
+                                  <i className="fa fa-paperclip text-muted"></i>
+                                </td>
 
-                          <td className="text-muted">May 13</td>
-                        </tr>
-
-                        <tr>
-                          <td className="pl-3">
-                            <div className="custom-control custom-checkbox">
-                              <input
-                                type="checkbox"
-                                className="custom-control-input"
-                                id="cst2"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="cst2"
-                              >
-                                &nbsp;
-                              </label>
-                            </div>
-                          </td>
-
-                          <td>
-                            <i className="fa fa-star"></i>
-                          </td>
-
-                          <td>
-                            <span className="mb-0 text-muted">Genelia</span>
-                          </td>
-                          <td>
-                            <a className="link" href="javascript: void(0)">
-                              <span className="text-dark">
-                                it has a more-or-less normal distribution of
-                                letters, as opposed to
-                              </span>
-                            </a>
-                          </td>
-                          <td>
-                            <i className="fa fa-paperclip text-muted"></i>
-                          </td>
-                          <td className="text-muted">January 13</td>
-                        </tr>
-                        <tr>
-                          <td className="pl-3">
-                            <div className="custom-control custom-checkbox">
-                              <input
-                                type="checkbox"
-                                className="custom-control-input"
-                                id="cst3"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="cst3"
-                              >
-                                &nbsp;
-                              </label>
-                            </div>
-                          </td>
-                          <td>
-                            <i className="fa fa-star text-warning"></i>
-                          </td>
-                          <td className="user-name max-texts">
-                            <span className="mb-0 text-muted font-light">
-                              Ritesh
-                            </span>
-                          </td>
-                          <td>
-                            <a className="link" href="javascript: void(0)">
-                              <span className="font-light text-dark">
-                                Something..
-                              </span>
-                            </a>
-                          </td>
-                          <td>
-                            <i className="fa fa-paperclip text-muted"></i>
-                          </td>
-                          <td className="text-muted font-light">May 13</td>
-                        </tr>
-                        <tr className="">
-                          <td className="pl-3">
-                            <div className="custom-control custom-checkbox">
-                              <input
-                                type="checkbox"
-                                className="custom-control-input"
-                                id="cst4"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="cst4"
-                              >
-                                &nbsp;
-                              </label>
-                            </div>
-                          </td>
-                          <td>
-                            <i className="fa fa-star"></i>
-                          </td>
-                          <td>
-                            <span className="mb-0 text-muted font-light">
-                              Kumar
-                            </span>
-                          </td>
-                          <td>
-                            <a className="link" href="javascript: void(0)">
-                              <span className="font-light text-dark">
-                                Perspiciatis
-                              </span>
-                            </a>
-                          </td>
-                          <td>
-                            <i className="fa fa-paperclip text-muted"></i>
-                          </td>
-                          <td className="text-muted font-light">May 9</td>
-                        </tr>
-                        <tr className="">
-                          <td className="pl-3">
-                            <div className="custom-control custom-checkbox">
-                              <input
-                                type="checkbox"
-                                className="custom-control-input"
-                                id="cst5"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="cst5"
-                              >
-                                &nbsp;
-                              </label>
-                            </div>
-                          </td>
-                          <td>
-                            <i className="fa fa-star"></i>
-                          </td>
-                          <td>
-                            <span className="mb-0 text-muted font-light">
-                              John Abraham
-                            </span>
-                          </td>
-                          <td>
-                            <a className="link" href="javascript: void(0)">
-                              <span className="font-light text-dark">
-                                Lorem
-                              </span>
-                            </a>
-                          </td>
-                          <td>
-                            <i className="fa fa-paperclip text-muted"></i>
-                          </td>
-                          <td className="text-muted font-light">Feburary 10</td>
-                        </tr>
-                        <tr className="">
-                          <td className="pl-3">
-                            <div className="custom-control custom-checkbox">
-                              <input
-                                type="checkbox"
-                                className="custom-control-input"
-                                id="cst6"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="cst6"
-                              >
-                                &nbsp;
-                              </label>
-                            </div>
-                          </td>
-                          <td>
-                            <i className="fa fa-star text-warning"></i>
-                          </td>
-                          <td>
-                            <span className="mb-0 text-muted font-light">
-                              Akshay
-                            </span>
-                          </td>
-                          <td>
-                            <a className="link" href="javascript: void(0)">
-                              <span className="font-light text-dark">
-                                ipsum
-                              </span>
-                            </a>
-                          </td>
-                          <td>
-                            <i className="fa fa-paperclip text-muted"></i>
-                          </td>
-                          <td className="text-muted font-light">December 09</td>
-                        </tr>
-                        <tr className="">
-                          <td className="pl-3">
-                            <div className="custom-control custom-checkbox">
-                              <input
-                                type="checkbox"
-                                className="custom-control-input"
-                                id="cst7"
-                              />
-                              <label
-                                className="custom-control-label"
-                                htmlFor="cst7"
-                              >
-                                &nbsp;
-                              </label>
-                            </div>
-                          </td>
-                          <td>
-                            <i className="fa fa-star text-warning"></i>
-                          </td>
-                          <td>
-                            <span className="mb-0 text-muted font-light">
-                              Hanna
-                            </span>
-                          </td>
-                          <td>
-                            <a className="link" href="javascript: void(0)">
-                              <span className="font-light text-dark">
-                                {" "}
-                                Unde
-                              </span>
-                            </a>
-                          </td>
-                          <td>
-                            <i className="fa fa-paperclip text-muted"></i>
-                          </td>
-                          <td className="text-muted font-light">Mar 09</td>
-                        </tr>
+                                <td className="text-muted">{date}</td>
+                              </tr>
+                            );
+                          }
+                        )}
                       </tbody>
                     </table>
                   </div>

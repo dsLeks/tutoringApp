@@ -81,6 +81,13 @@ export default function Search() {
               //for Courses
               return (
                 <div className="swrapper" key={index + "cat"}>
+                  <div className="i-wrapper">
+                    <img
+                      src={searchResponse.imageReference}
+                      width="200"
+                      height="200"
+                    ></img>
+                  </div>
                   <div className="info-wrapper">
                     <ul className="searchul">
                       {console.log(
@@ -89,6 +96,7 @@ export default function Search() {
                       )}
                       <li>CourseID: {searchResponse.courseID}</li>
                       <li>TutorID: {searchResponse.tutor_id}</li>
+                      <li>Email: {searchResponse.email}</li>
                       <li>Tutor Name: {searchResponse.firstName}</li>
                       <li>Course Name: {searchResponse.lastName}</li>
                       <li>

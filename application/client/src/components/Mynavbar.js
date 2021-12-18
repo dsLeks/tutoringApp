@@ -54,7 +54,7 @@ const Mynavbar = () => {
               href="/about"
               className="nav-item nav-link btn-outline-dark"
             >
-              About Us {loggedInUser.firstName}
+              About Us
             </Button>
             {loggedInUser.isTutor && loggedInUser.firstName !== "" ? (
               <>
@@ -104,13 +104,18 @@ const Mynavbar = () => {
           <div className="navbar-nav">
             {loggedInUser.status === "Authenticated!" &&
             !!loggedInUser.email ? (
-              <Button
-                href="#"
-                className="nav-item nav-link btn-outline-dark"
-                onClick={logout}
-              >
-                LogOut
-              </Button>
+              <>
+                <Button className="nav-item nav-link btn-outline-dark">
+                  Hello {loggedInUser.firstName}
+                </Button>
+                <Button
+                  href="#"
+                  className="nav-item nav-link btn-outline-dark"
+                  onClick={logout}
+                >
+                  LogOut
+                </Button>
+              </>
             ) : (
               <>
                 <Button
