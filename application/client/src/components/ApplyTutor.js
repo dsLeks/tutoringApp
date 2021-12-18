@@ -98,9 +98,9 @@ return true; //no problems with the form
       const text = await response.text();
       console.log(text);
 
-      this.setState(initialState) //form goes back to initial state
     }
 
+    this.setState(initialState) //form goes back to initial state
 
 
   }
