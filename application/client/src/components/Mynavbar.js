@@ -65,12 +65,6 @@ const Mynavbar = (props) => {
                 >
                   Dashboard
                 </Button>
-                <Button
-                  href="/StudentProfile"
-                  className="nav-item nav-link btn-outline-dark"
-                >
-                  Profile
-                </Button>
               </>
             ) : (
               <>
@@ -82,6 +76,12 @@ const Mynavbar = (props) => {
                 </Button>
               </>
             )}
+            <Button
+              href="/StudentProfile"
+              className="nav-item nav-link btn-outline-dark"
+            >
+              Profile
+            </Button>
 
             <Button
               href="/Postings"
