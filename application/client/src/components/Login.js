@@ -72,7 +72,7 @@ function Login(props) {
       console.log("res json", json);
       setLoggedInUser(json);
       localStorage.setItem("whpf_user", JSON.stringify(json));
-      props.history.push("/Tutor-Dashboard");
+      props.history.push("/");
       setLoginStatus(json.message);
       //setLoginStatus(json.status);
     }
