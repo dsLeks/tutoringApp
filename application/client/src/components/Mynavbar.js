@@ -82,7 +82,10 @@ const Mynavbar = () => {
               </>
             )}
 
-            <Button href="/Postings" className="nav-item nav-link btn-outline-dark">
+            <Button
+              href="/Postings"
+              className="nav-item nav-link btn-outline-dark"
+            >
               Posts
             </Button>
 
