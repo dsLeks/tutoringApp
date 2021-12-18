@@ -5,7 +5,8 @@ class Postings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      post: []
+      post: [],
+      body: ""
     }
   }
 
@@ -24,6 +25,19 @@ class Postings extends React.Component {
       })
   }
 
+  handlePostChange = (event) => {
+    this.setState({body: event.target.value})
+  }
+
+  submitPost(event) {
+    console.log(this.state.body)
+    this.state.post.push(this.state.body)
+    this.setState.body = " "
+    event.preventDefault()
+
+  }
+
+
   render(){
     return (
       <div>
@@ -32,7 +46,9 @@ class Postings extends React.Component {
         })}</ol>
         <label>
           Type The post here:
-          <input type="text"></input>
+          
+          <input type="text" value={this.state.body} onChange={this.handlePostChange}></input>
+          <button type="button" onClick={this.submitPost}>Submit</button>
         </label>
       </div>
     )
