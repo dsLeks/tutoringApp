@@ -14,7 +14,7 @@ import $ from "jquery";
 import Searchbar from "./SearchBar";
 import { AppContext } from "../AppContext";
 
-const Mynavbar = () => {
+const Mynavbar = (props) => {
   const { loggedInUser, setLoggedInUser } = useContext(AppContext);
   console.log("context", loggedInUser.status);
 
@@ -24,6 +24,7 @@ const Mynavbar = () => {
     localStorage.removeItem("whpf_user");
     setLoggedInUser({});
     setLoggedOut(true);
+    props.history.push("/Login");
   };
 
   return (
@@ -115,7 +116,7 @@ const Mynavbar = () => {
                   Hello {loggedInUser.firstName}
                 </Button>
                 <Button
-                  href="#"
+                  href="/"
                   className="nav-item nav-link btn-outline-dark"
                   onClick={logout}
                 >
