@@ -71,8 +71,8 @@ function Login(props) {
     } else {
       console.log("res json", json);
       setLoggedInUser(json);
-
-      props.history.push("/StudentProfile");
+      localStorage.setItem("whpf_user", JSON.stringify(json));
+      props.history.push("/Tutor-Dashboard");
       setLoginStatus(json.message);
       //setLoginStatus(json.status);
     }

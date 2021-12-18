@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import "./navbar.css";
 import { NavLink } from "react-router-dom";
 import Container from "react-bootstrap/Container";
@@ -15,8 +15,16 @@ import Searchbar from "./SearchBar";
 import { AppContext } from "../AppContext";
 
 const Mynavbar = () => {
-  const { loggedInUser } = useContext(AppContext);
-  console.log(loggedInUser);
+  const { loggedInUser, setLoggedInUser } = useContext(AppContext);
+  console.log("context", loggedInUser.status);
+
+  const [loggedOut, setLoggedOut] = useState(false);
+
+  const logout = () => {
+    localStorage.removeItem("whpf_user");
+    setLoggedInUser({});
+    setLoggedOut(true);
+  };
 
   return (
     <nav
@@ -54,7 +62,13 @@ const Mynavbar = () => {
                   href="/Tutor-Dashboard"
                   className="nav-item nav-link btn-outline-dark"
                 >
-                  Dashboard(temp)
+                  Dashboard
+                </Button>
+                <Button
+                  href="/StudentProfile"
+                  className="nav-item nav-link btn-outline-dark"
+                >
+                  Profile
                 </Button>
               </>
             ) : (
@@ -71,7 +85,7 @@ const Mynavbar = () => {
             <Button href="/post" className="nav-item nav-link btn-outline-dark">
               Post
             </Button>
-           
+
             {/** 
             <Button
               href="/StudentProfile"
@@ -85,7 +99,16 @@ const Mynavbar = () => {
           <Searchbar />
 
           <div className="navbar-nav">
-            {loggedInUser.firstName === "" ? (
+            {loggedInUser.status === "Authenticated!" &&
+            !!loggedInUser.email ? (
+              <Button
+                href="#"
+                className="nav-item nav-link btn-outline-dark"
+                onClick={logout}
+              >
+                LogOut
+              </Button>
+            ) : (
               <>
                 <Button
                   href="/Login"
@@ -101,13 +124,6 @@ const Mynavbar = () => {
                   Register
                 </Button>
               </>
-            ) : (
-              <Button
-                href="#"
-                className="nav-item nav-link btn-outline-dark"
-              >
-                LogOut
-              </Button>
             )}
           </div>
         </div>
