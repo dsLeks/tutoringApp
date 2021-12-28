@@ -19,7 +19,7 @@ To SSH into Server:
 
     Hostname / URL: sfsu-swe-db1.cxmkfkhrgxty.us-west-1.rds.amazonaws.com
     Username: admin
-    Password: boltDog4$
+    Password: ****
     Port: 3306
     Database Name: sfsu-swe-db1
 
