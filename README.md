@@ -5,14 +5,14 @@ This team project is a tutoring web application. The application provides studen
 The location of the project is in the 'Application' folder. The URL is:  http://54.177.172.73:3000/ 
 
 The tech Stack used: 
--Server Host: AWS EC2 Instance 1vCPU 2GB Ram
--Operating System: Ubuntu v18.0
--Database: MySQL v8.0.26
--Web Server: Nodejs 14.17.6
--Server-Side Language: Javascript
--Additional Technologies: Web Framework: Expressjs 4.17.1
--Front-End UI: Reactjs 17.0.2, HTML/CSS
--IDE: Visual Studio Code 
+- Server Host: AWS EC2 Instance 1vCPU 2GB Ram
+- Operating System: Ubuntu v18.0
+- Database: MySQL v8.0.26
+- Web Server: Nodejs 14.17.6
+- Server-Side Language: Javascript
+- Additional Technologies: Web Framework: Expressjs 4.17.1
+- Front-End UI: Reactjs 17.0.2, HTML/CSS
+- IDE: Visual Studio Code 
 
 
 My Responsibility: 
