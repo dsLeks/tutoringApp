@@ -1,25 +1,24 @@
-# csc648 Repository
+# SFSU Tutoring App 
 
-## Please when ready add your teams application URL or IP to the repository description. This will help with grading. Teams are expected to keep this value up to date.
+This team project is a tutoring web application. The application provides students information on tutors and allows them to contact them via a one way message. The purpose of the app is to connect SFSU students to tutors. 
 
-## Please do the following steps before completing Milestone 0.
-1. Change the name of the repository. All that needs to change is the NN to your respective team number. Team numbers whose value is less than 10, please pad with a 0. Ex team 1 is Team01 team 11 is Team11. Please make sure to also remove the username from the repository as well. Teams with incorrectly name repository will have points deducted from their milestone 0 grades.
-      - Please follow the naming convention assigned by your instructor.
+The location of the project is in the 'Application' folder. The URL is:  http://54.177.172.73:3000/ 
 
-1. PLEASE REMOVE THE USERNAME FROM THE REPOSITORY NAME!!!
+The tech Stack used: 
+Server Host: AWS EC2 Instance 1vCPU 2GB Ram
+Operating System: Ubuntu v18.0
+Database: MySQL v8.0.26
+Web Server: Nodejs 14.17.6
+Server-Side Language: Javascript
+Additional Technologies: Web Framework: Expressjs 4.17.1
+Front-End UI: Reactjs 17.0.2, HTML/CSS
+IDE: Visual Studio Code 
 
-2. Add ALL members of your team to this repository. For it to count, they must ACCEPT the invite.
 
-3. Fill out the table below
+My Responsibility: 
+- Server side Development ('server.js' was completely developed by me). 
+- Cloud Deployment 
+- Database Management
 
 
-| Student Name | Student Email | GitHub Username |
-|    :---:     |     :---:     |     :---:       |
-| Alekhya Gandu      | agandu1@mail.sfsu.edu       | dsLeks                |
-| William Lushbough      | wlushbough@mail.sfsu.              | lushbough                |
-| Justin Diones      |  jdiones@mail.sfsu.edu             |  justdio               |
-| Rui Qi Huang      |    rhuang10@mail.sfsu.edu           |    RuiQiHuang1832             |
-| Mai Ra     |   mra1@mail.sfsu.edu            |  Mai873               |
-| Rupak Khatri     |    rkhatri@mail.sfsu.edu           |  RupakKhatri               |
 
-## NO code needs to be stored in the root of your repository. You may rename the application folder if you like to your team's application name. But all source code related to your team's application should be stored inside the application folder.
